@@ -1,7 +1,15 @@
+// User-defined package
 package com.chessTestProject.engine.board;
 
+// imported user-defined package
 import com.chessTestProject.engine.pieces.Piece;
 
+/**
+ * 
+ * @author Gerwin Terpstra
+ * @version 1.0
+ * @since 02-17-2021
+ */
 public abstract class Move {
 
 	final Board board;
@@ -25,7 +33,6 @@ public abstract class Move {
 		public AttackMove(final Board board, final Piece movedPiece, final int destinationCoordinate, final Piece attackedPiece) {
 			super(board, movedPiece, destinationCoordinate);
 			this.attackedPiece = attackedPiece;
-			}
+		}
 	}
- 	
 }
