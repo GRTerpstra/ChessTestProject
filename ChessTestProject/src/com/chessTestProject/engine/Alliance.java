@@ -66,7 +66,7 @@ public enum Alliance {
 		}
 	};
 	
-	// Declaration of abstract methods
+	// Declare abstract methods
 	public abstract int getDirection();
 	public abstract boolean isWhite();
 	public abstract boolean isBlack();
