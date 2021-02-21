@@ -1,12 +1,12 @@
-// User-defined package
+// User-defined package.
 package com.chessTestProject.engine.board;
 
 /**
  * Class that creates the logic of the board.
  * 
- * @author Gerwin Terpstra
- * @version 1.0
- * @since 02-18-2021
+ * @author Gerwin Terpstra.
+ * @version 1.0.
+ * @since 02-18-2021.
  */
 public class BoardUtils {
 	
@@ -20,7 +20,7 @@ public class BoardUtils {
 	public static final boolean[] SECOND_ROW = null;
 	public static final boolean[] SEVENTH_ROW = null;
 	
-	// Constructor
+	// Constructor.
 	private BoardUtils() {
 		throw new RuntimeException("You cannot instantiate me!");
 	}

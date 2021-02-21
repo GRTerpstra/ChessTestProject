@@ -1,7 +1,7 @@
-// User-defined package
+// User-defined package.
 package com.chessTestProject.engine.board;
 
-// Imported built-in packages
+// Imported built-in packages.
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,29 +9,29 @@ import com.chessTestProject.engine.pieces.Piece;
 
 /**
  * Abstract class that creates the tiles of a board.
- * @author Gerwin Terpstra
- * @version 1.0
- * @since 02-18-2021
+ * @author Gerwin Terpstra.
+ * @version 1.0.
+ * @since 02-18-2021.
  */
 public abstract class Tile {
 
-	// Declare variables	
+	// Declare variables.
 	protected final int tileCoordinate;	
 	
 	// Declare and initializes variables.
 	private static final Map<Integer, EmptyTile> EMPTY_FILE_CACHE = createAllPossibleEmptyTiles();
 	
-	// Constructor		
+	// Constructor.
 	private Tile(final int tileCoordinate) {
 		this.tileCoordinate = tileCoordinate;
 	}
 	
-	// Declare abstract methods
+	// Declare abstract methods.
 	public abstract boolean isTileOccupied();	
 	public abstract Piece getPiece();
 	
 	/**
-	 * Method that creates a map of tiles that resembles a playing board.
+	 * Method that creates a map of empty tiles that resembles a playing board.
 	 * @return Map of 64 objects of EmptyTile.
 	 */
 	private static Map<Integer, EmptyTile> createAllPossibleEmptyTiles() {
@@ -44,25 +44,24 @@ public abstract class Tile {
 	}
 	
 	/**
-	 * Method 
-	 * @param tileCoordinate
-	 * @param piece
-	 * @return
+	 * Method that creates a tile that is either empty or occupied with a piece.
+	 * @param int tileCoordinate coordinate that the tile should have.
+	 * @param Piece piece an optional piece that could occupy the tile.
+	 * @return OccupiedTile a tile with a piece on it OR EmptyTile a tile with no piece on it.
 	 */
 	public static Tile createTile(final int tileCoordinate, final Piece piece) {
 		return piece != null ? new OccupiedTile(tileCoordinate, piece) : EMPTY_FILE_CACHE.get(tileCoordinate);
 	}
 	
-	
 	/**
 	 * Nested subclass that creates an empty tile.
-	 * @author Gerwin Terpstra
-	 * @version 1.0
-	 * @since 02-18-2021
+	 * @author Gerwin Terpstra.
+	 * @version 1.0.
+	 * @since 02-18-2021.
 	 */
 	public static final class EmptyTile extends Tile {
 		
-		// Constructor		
+		// Constructor.	
 		private EmptyTile(final int coordinate) {
 			super(coordinate);
 		}
@@ -90,16 +89,16 @@ public abstract class Tile {
 	
 	/**
 	 * Nested subclass that creates an occupied tile. 
-	 * @author Gerwin Terpstra
-	 * @version 1.0
-	 * @since 02-18-2021
+	 * @author Gerwin Terpstra.
+	 * @version 1.0.
+	 * @since 02-18-2021.
 	 */
 	public static final class OccupiedTile extends Tile {
 		
 		// Declare variable.
 		private final Piece pieceOnTile;
 		
-		// Constructor		
+		// Constructor.		
 		private OccupiedTile(int tileCoordinate, final Piece pieceOnTile) {
 			super(tileCoordinate);
 			this.pieceOnTile = pieceOnTile;

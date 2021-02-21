@@ -1,12 +1,12 @@
-// User-defined package
+// User-defined package.
 package com.chessTestProject.engine;
 
 /**
  * Enum that contains the 'white' and 'black' constants to define the alliance of a piece.
  * 
- * @author Gerwin Terpstra
- * @version 1.0
- * @since 02-17-2021
+ * @author Gerwin Terpstra.
+ * @version 1.0.
+ * @since 02-17-2021.
  */
 public enum Alliance {	
 	WHITE {

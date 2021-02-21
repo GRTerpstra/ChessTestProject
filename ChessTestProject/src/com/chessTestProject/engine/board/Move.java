@@ -1,15 +1,15 @@
 // User-defined package
 package com.chessTestProject.engine.board;
 
-// imported user-defined package
+// imported user-defined packages.
 import com.chessTestProject.engine.pieces.Piece;
 
 /**
  * Abstract class that defines how pieces can move around the board.
  * 
- * @author Gerwin Terpstra
- * @version 1.0
- * @since 02-17-2021
+ * @author Gerwin Terpstra.
+ * @version 1.0.
+ * @since 02-17-2021.
  */
 public abstract class Move {
 
