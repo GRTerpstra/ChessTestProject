@@ -30,6 +30,14 @@ public abstract class Piece {
 		this.isFirstMove = false;
 	}
 	
+	/**
+	 * Method that returns the position of the piece on the board.
+	 * @return int piecePosition the position of the piece.
+	 */
+	public int getPiecePosition() {
+		return this.piecePosition;
+	}
+	
 	// Declare abstract method.
 	public abstract Collection<Move> calculateLegalMoves(final Board board);
 	

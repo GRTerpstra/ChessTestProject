@@ -65,10 +65,10 @@ public class Knight extends Piece {
 	}	
 	
 	/**
-	 * Method that checks if the knight is on the first column or not.
+	 * Method that checks if the knight is on the second column or not, and if the move that it wants to do is invalid from the second column.
 	 * @param int currentPosition the coordinate of the current position of the knight.
-	 * @param int candidateOffset the number with which you calculate the coordinates the knight can move to.
-	 * @return boolean true if the knight is on the first column of the board, false if the knight is not on the first column.
+	 * @param int candidateOffset the number with which you indicate/calculate where the knight has to move to.
+	 * @return boolean true if the knight wants to do an invalid move while being on the second column of the board, false otherwise.
 	 */
 	private static boolean isFirstColumnExclusion(final int currentPosition, final int candidateOffset) {		
 		return BoardUtils.FIRST_COLUMN[currentPosition] && (candidateOffset == -17 || candidateOffset == -10 || 
@@ -76,30 +76,30 @@ public class Knight extends Piece {
 	}
 	
 	/**
-	 * Method that checks if the knight is on the second column or not.
+	 * Method that checks if the knight is on the second column or not, and if the move that it wants to do is invalid from the second column.
 	 * @param int currentPosition the coordinate of the current position of the knight.
-	 * @param int candidateOffset the number with which you calculate the coordinates the knight can move to.
-	 * @return boolean true if the knight is on the second column of the board, false if the knight is not on the second column.
-	 */	
+	 * @param int candidateOffset the number with which you indicate/calculate where the knight has to move to.
+	 * @return boolean true if the knight wants to do an invalid move while being on the second column of the board, false otherwise.
+	 */
 	private static boolean isSecondColumnExclusion(final int currentPosition, final int candidateOffset) {
 		return BoardUtils.SECOND_COLUMN[currentPosition] && (candidateOffset == -10 || candidateOffset == 6);
 	}
 	
 	/**
-	 * Method that checks if the knight is on the seventh column or not.
+	 * Method that checks if the knight is on the seventh column or not, and if the move that it wants to do is invalid from the seventh column.
 	 * @param int currentPosition the coordinate of the current position of the knight.
-	 * @param int candidateOffset the number with which you calculate the coordinates the knight can move to.
-	 * @return boolean true if the knight is on the seventh column of the board, false if the knight is not on the seventh column.
+	 * @param int candidateOffset the number with which you indicate/calculate where the knight has to move to.
+	 * @return boolean true if the knight wants to do an invalid move while being on the seventh column of the board, false otherwise.
 	 */
 	private static boolean isSeventhColumnExclusion(final int currentPosition, final int candidateOffset) {
 		return BoardUtils.SEVENTH_COLUMN[currentPosition] && (candidateOffset == -6 || candidateOffset == 10);
 	}
 	
 	/**
-	 * Method that checks if the knight is on the eight column or not.
+	 * Method that checks if the knight is on the eight column or not, and if the move that it wants to do is invalid from the eight column.
 	 * @param int currentPosition the coordinate of the current position of the knight.
-	 * @param int candidateOffset the number with which you calculate the coordinates the knight can move to.
-	 * @return boolean true if the knight is on the eight column of the board, false if the knight is not on the eight column.
+	 * @param int candidateOffset the number with which you indicate/calculate where the knight has to move to.
+	 * @return boolean true if the knight wants to do an invalid move while being on the eight column of the board, false otherwise.
 	 */
 	private static boolean isEightColumnExclusion(final int currentPosition, final int candidateOffset) {
 		return BoardUtils.EIGHT_COLUMN[currentPosition] && (candidateOffset == -15 || candidateOffset == -6 || 
