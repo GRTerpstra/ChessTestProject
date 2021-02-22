@@ -17,7 +17,7 @@ import java.util.Collection;
  */
 public abstract class Piece {
 	
-	// Declare variables.
+	// Declare member variables.
 	protected final int piecePosition;
 	protected final Alliance pieceAlliance;
 	protected final boolean isFirstMove;
@@ -54,6 +54,26 @@ public abstract class Piece {
 	 * @return boolean isFirstMove true if the piece has not moved yet, false if the piece has already moved at least once.
 	 */
 	public boolean isFirstMove() {
-		return this.isFirstMove();
+		return this.isFirstMove;
 	}		
+	
+	public enum PieceType {
+		
+		PAWN("p"),
+		KNIGHT("N"),
+		BISHOP("B"),
+		ROOK("R"),
+		QUEEN("Q"),
+		KING("K");
+		
+		final String pieceName;
+		PieceType(final String pieceName) {
+			this.pieceName = pieceName;
+		}
+		
+		@Override
+		public String toString() {
+			return this.pieceName;
+		}
+	}
 }

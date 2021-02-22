@@ -13,7 +13,7 @@ import com.chessTestProject.engine.pieces.Piece;
  */
 public abstract class Move {
 
-	// Declare and initializes variables. 
+	// Declare and initializes member variables. 
 	final Board board;
 	final Piece movedPiece;
 	final int destinationCoordinate;

@@ -23,11 +23,11 @@ import java.util.List;
  */
 public class Bishop extends Piece {
 
-	// declare and initialize constant variable.
+	// declare and initialize constant member variable.
 	private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-9, -7, 7, 9};
 	
 	// Constructor.
-	Bishop(int piecePosition, Alliance pieceAlliance) {
+	public Bishop(final int piecePosition, final Alliance pieceAlliance) {
 		super(piecePosition, pieceAlliance);
 	}
 
@@ -64,6 +64,11 @@ public class Bishop extends Piece {
 		}
 		// !!! Maybe immutable instead see video 7 !!!
 		return legalMoves;
+	}
+	
+	@Override
+	public String toString() {
+		return PieceType.BISHOP.toString();
 	}
 	
 	/**

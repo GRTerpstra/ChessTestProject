@@ -9,6 +9,7 @@ import com.chessTestProject.engine.board.Move;
 import com.chessTestProject.engine.board.Tile;
 import com.chessTestProject.engine.board.Move.AttackMove;
 import com.chessTestProject.engine.board.Move.MajorMove;
+import com.chessTestProject.engine.pieces.Piece.PieceType;
 
 // Imported built-in packages.
 import java.util.ArrayList;
@@ -23,11 +24,11 @@ import java.util.List;
  */
 public class Queen extends Piece{	
 	
-	// Declare and initialize constant variable.
+	// Declare and initialize constant member variable.
 	private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-9, -8, -7, -1, 1, 7, 8, 9};
 	
 	// Constructor.
-	Queen(int piecePosition, Alliance pieceAlliance) {		
+	public Queen(final int piecePosition,final Alliance pieceAlliance) {		
 		super(piecePosition, pieceAlliance);
 	}
 
@@ -64,6 +65,11 @@ public class Queen extends Piece{
 		}		
 		// !!! Maybe immutable instead see video 7 !!!
 		return legalMoves;
+	}
+	
+	@Override
+	public String toString() {
+		return PieceType.QUEEN.toString();
 	}
 
 	/**

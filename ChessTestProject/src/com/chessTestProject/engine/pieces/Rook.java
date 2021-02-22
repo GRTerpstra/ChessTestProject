@@ -9,6 +9,7 @@ import com.chessTestProject.engine.board.Move;
 import com.chessTestProject.engine.board.Tile;
 import com.chessTestProject.engine.board.Move.AttackMove;
 import com.chessTestProject.engine.board.Move.MajorMove;
+import com.chessTestProject.engine.pieces.Piece.PieceType;
 
 // Imported built-in packages.
 import java.util.ArrayList;
@@ -23,11 +24,11 @@ import java.util.List;
  */
 public class Rook extends Piece {
 	
-	// Declare and initialize constant variable.
+	// Declare and initialize constant member variable.
 	private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-8, -1, 1, 8};	
 	
 	// Constructor.
-	Rook(int piecePosition, Alliance pieceAlliance) {
+	public Rook(final int piecePosition,final Alliance pieceAlliance) {
 		super(piecePosition, pieceAlliance);
 	}
 	
@@ -66,6 +67,11 @@ public class Rook extends Piece {
 		return legalMoves;
 	}
 
+	@Override
+	public String toString() {
+		return PieceType.ROOK.toString();
+	}
+	
 	/**
 	 * Method that checks if the rook is on the first column or not, and if the move that it wants to do is invalid from the first column.
 	 * @param int currentPosition the coordinate of the current position of the rook.

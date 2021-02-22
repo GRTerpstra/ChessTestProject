@@ -8,6 +8,7 @@ import com.chessTestProject.engine.board.Board;
 import com.chessTestProject.engine.board.Move;
 // !!! Have to use '*' because it's a nested class !!!
 import com.chessTestProject.engine.board.Move.*;
+import com.chessTestProject.engine.pieces.Piece.PieceType;
 import com.chessTestProject.engine.board.Tile;
 
 // Imported built-in packages.
@@ -23,11 +24,11 @@ import java.util.List;
  */
 public class Knight extends Piece {	
 	
-	// Declare and initialize constant variable.
+	// Declare and initialize constant member variable.
 	private final static int[] CANDIDATE_MOVE_COORDINATES = { -17, -15, -10, -6, 6, 10, 15, 17};
 
 	// Constructor
-	Knight(final int piecePosition, Alliance pieceAlliance) {
+	public Knight(final int piecePosition,final Alliance pieceAlliance) {
 		super(piecePosition, pieceAlliance);
 	}
 	
@@ -63,6 +64,11 @@ public class Knight extends Piece {
 		// !!! Maybe immutable instead see video 4 !!!		
 		return legalMoves;		
 	}	
+	
+	@Override
+	public String toString() {
+		return PieceType.KNIGHT.toString();
+	}
 	
 	/**
 	 * Method that checks if the knight is on the second column or not, and if the move that it wants to do is invalid from the second column.

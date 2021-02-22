@@ -15,10 +15,10 @@ import com.chessTestProject.engine.pieces.Piece;
  */
 public abstract class Tile {
 
-	// Declare variables.
+	// Declare member variables.
 	protected final int tileCoordinate;	
 	
-	// Declare and initializes variables.
+	// Declare and initializes member variables.
 	private static final Map<Integer, EmptyTile> EMPTY_FILE_CACHE = createAllPossibleEmptyTiles();
 	
 	// Constructor.
@@ -27,7 +27,10 @@ public abstract class Tile {
 	}
 	
 	// Declare abstract methods.
-	public abstract boolean isTileOccupied();	
+	public boolean isTileOccupied() {
+		// TODO Auto-generated method stub
+		return false;
+	}	
 	public abstract Piece getPiece();
 	
 	/**
@@ -66,6 +69,11 @@ public abstract class Tile {
 			super(coordinate);
 		}
 		
+		@Override
+		public String toString() {
+			return "-";
+		}
+		
 		/**
 		 * Method that returns a boolean false because an empty tile is not occupied.		
 		 * @return boolean false.
@@ -102,6 +110,12 @@ public abstract class Tile {
 		private OccupiedTile(int tileCoordinate, final Piece pieceOnTile) {
 			super(tileCoordinate);
 			this.pieceOnTile = pieceOnTile;
+		}
+		
+		@Override
+		public String toString() {
+			return getPiece().getPieceAlliance().isBlack() ? getPiece().toString().toLowerCase() :
+				getPiece().toString();
 		}
 		
 		/**
