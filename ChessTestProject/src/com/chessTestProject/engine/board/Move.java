@@ -27,6 +27,12 @@ public abstract class Move {
 		this.destinationCoordinate = destinationCoordinate;
 	}
 	
+	public abstract Board execute();
+	
+	public int getDestinationCOordinate() {
+		return this.destinationCoordinate;
+	}
+	
 	/**
 	 * Nested class that moves a piece around the board.
 	 * @author Gerwin Terpstra
@@ -39,6 +45,12 @@ public abstract class Move {
 				final Piece movedPiece, 
 				final int destinationCoordinate) {
 			super(board, movedPiece, destinationCoordinate);
+		}
+
+		@Override
+		public Board execute() {
+			// TODO Auto-generated method stub
+			return null;
 		}
 	}
 	
@@ -57,5 +69,12 @@ public abstract class Move {
 			super(board, movedPiece, destinationCoordinate);
 			this.attackedPiece = attackedPiece;
 		}
+		@Override
+		public Board execute() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 	}
+
+
 }

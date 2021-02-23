@@ -28,7 +28,7 @@ public class Bishop extends Piece {
 	
 	// Constructor.
 	public Bishop(final int piecePosition, final Alliance pieceAlliance) {
-		super(piecePosition, pieceAlliance);
+		super(PieceType.BISHOP, piecePosition, pieceAlliance);
 	}
 
 	/**

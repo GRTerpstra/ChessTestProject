@@ -8,7 +8,6 @@ import com.chessTestProject.engine.board.Board;
 import com.chessTestProject.engine.board.Move;
 // !!! Have to use '*' because it's a nested class !!!
 import com.chessTestProject.engine.board.Move.*;
-import com.chessTestProject.engine.pieces.Piece.PieceType;
 import com.chessTestProject.engine.board.Tile;
 
 // Imported built-in packages.
@@ -29,7 +28,7 @@ public class Knight extends Piece {
 
 	// Constructor
 	public Knight(final int piecePosition,final Alliance pieceAlliance) {
-		super(piecePosition, pieceAlliance);
+		super(PieceType.KNIGHT, piecePosition, pieceAlliance);
 	}
 	
 	/**
