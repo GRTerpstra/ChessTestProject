@@ -63,8 +63,13 @@ public class Rook extends Piece {
 				}
 			}			
 		}		
-		// !!! Maybe immutable instead see video 7 !!!
+		// XXX Maybe immutable instead see video 7
 		return legalMoves;
+	}
+	
+	@Override
+	public Rook movePiece(Move move) {
+		return new Rook(move.getDestinationCOordinate(), move.getMovedPiece().getPieceAlliance());
 	}
 
 	@Override

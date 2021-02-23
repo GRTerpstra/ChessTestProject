@@ -90,4 +90,9 @@ public class Bishop extends Piece {
 	private static boolean isEightColumnExclusion(final int currentPosition, final int candidateOffset) {
 		return BoardUtils.EIGHT_COLUMN[currentPosition] && (candidateOffset == -7 || candidateOffset == 9);
 	}
+
+	@Override
+	public Bishop movePiece(Move move) {
+		return new Bishop(move.getDestinationCOordinate(), move.getMovedPiece().getPieceAlliance());
+	}
 }

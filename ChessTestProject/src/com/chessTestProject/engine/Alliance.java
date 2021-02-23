@@ -1,6 +1,10 @@
 // User-defined package.
 package com.chessTestProject.engine;
 
+import com.chessTestProject.engine.player.BlackPlayer;
+import com.chessTestProject.engine.player.Player;
+import com.chessTestProject.engine.player.WhitePlayer;
+
 /**
  * Enum that contains the 'white' and 'black' constants to define the alliance of a piece.
  * 
@@ -36,6 +40,13 @@ public enum Alliance {
 		public boolean isBlack() {
 			return false;
 		}
+
+		@Override
+		public Player choosePlayer(final WhitePlayer whitePlayer, 
+										final BlackPlayer blackPlayer) {
+			// TODO Auto-generated method stub
+			return whitePlayer;
+		}
 	},	
 	BLACK {
 		/**
@@ -64,10 +75,18 @@ public enum Alliance {
 		public boolean isBlack() {
 			return true;
 		}
+
+		@Override
+		public Player choosePlayer(final WhitePlayer whitePlayer, 
+										final BlackPlayer blackPlayer) {
+			// TODO Auto-generated method stub
+			return blackPlayer;
+		}
 	};
 	
 	// Declare abstract methods
 	public abstract int getDirection();
 	public abstract boolean isWhite();
 	public abstract boolean isBlack();
+	public abstract Player choosePlayer(WhitePlayer whitePlayer, BlackPlayer blackPlayer);
 }
