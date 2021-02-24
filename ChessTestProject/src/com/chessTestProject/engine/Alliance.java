@@ -1,13 +1,14 @@
 // User-defined package.
 package com.chessTestProject.engine;
 
+// Imported user-defined packages.
 import com.chessTestProject.engine.player.BlackPlayer;
 import com.chessTestProject.engine.player.Player;
 import com.chessTestProject.engine.player.WhitePlayer;
 
 /**
- * Enum that contains the 'white' and 'black' constants to define the alliance of a piece.
- * 
+ * Enum that contains the 'white' and 'black' constants to define the alliance of a piece,
+ * together with methods to return information about the specific alliance.
  * @author Gerwin Terpstra.
  * @version 1.0.
  * @since 02-17-2021.
@@ -41,10 +42,15 @@ public enum Alliance {
 			return false;
 		}
 
+		/**
+		 * Method that returns the white player if it's the white players turn.
+		 * @param WhitePlayer whitePlayer the player with the white alliance
+		 * @param BlackPlayer blackPlayer the player with the black alliance.
+		 * @return WhitePlayer whitePlayer the player with the white alliance.
+		 */
 		@Override
 		public Player choosePlayer(final WhitePlayer whitePlayer, 
 										final BlackPlayer blackPlayer) {
-			// TODO Auto-generated method stub
 			return whitePlayer;
 		}
 	},	
@@ -75,11 +81,16 @@ public enum Alliance {
 		public boolean isBlack() {
 			return true;
 		}
-
+		
+		/**
+		 * Method that returns the black player if it's the black players turn.
+		 * @param WhitePlayer whitePlayer the player with the white alliance
+		 * @param BlackPlayer blackPlayer the player with the black alliance.
+		 * @return BlackPlayer blackPlayer the player with the black alliance.
+		 */
 		@Override
 		public Player choosePlayer(final WhitePlayer whitePlayer, 
 										final BlackPlayer blackPlayer) {
-			// TODO Auto-generated method stub
 			return blackPlayer;
 		}
 	};

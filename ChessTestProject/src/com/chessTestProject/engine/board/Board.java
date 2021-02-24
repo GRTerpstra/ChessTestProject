@@ -12,13 +12,12 @@ import com.chessTestProject.engine.player.WhitePlayer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 /**
- * TODO
+ * Class that builds the gameboard and initializes everything on it.
  * @author Gerwin Terpstra.
  * @version 1.0.
  * @since 02-17-2021.
@@ -28,8 +27,7 @@ public class Board {
 	// Declare member variables.
 	private final List<Tile> gameBoard;
 	private final Collection<Piece> whitePieces;
-	private final Collection<Piece> blackPieces;
-	
+	private final Collection<Piece> blackPieces;	
 	private final WhitePlayer whitePlayer;
 	private final BlackPlayer blackPlayer;
 	private final Player currentPlayer;
@@ -45,11 +43,17 @@ public class Board {
 		final Collection<Move> whiteStandardLegalMoves = calculateLegalMoves(this.whitePieces);
 		final Collection<Move> blackStandardLegalMoves = calculateLegalMoves(this.blackPieces);
 		
+		// Initialize member variables with the now initialized local variables.
 		this.whitePlayer = new WhitePlayer(this, whiteStandardLegalMoves, blackStandardLegalMoves);
 		this.blackPlayer = new BlackPlayer(this, whiteStandardLegalMoves, whiteStandardLegalMoves);
 		this.currentPlayer = builder.nextMoveMaker.choosePlayer(this.whitePlayer, this.blackPlayer);
 	}
 	
+	/**
+	 * Method that builds the board with the String type. 
+	 * The method overrides the built-in method of String.toString().
+	 * @return String builder the board in a String type.
+	 */
 	@Override
 	public String toString() {
 		final StringBuilder builder = new StringBuilder();
