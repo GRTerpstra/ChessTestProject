@@ -2,14 +2,12 @@
 package com.chessTestProject.engine.board;
 
 /**
- * Class that creates the logic of the board.
- * 
+ * Class that creates the logic of the board. * 
  * @author Gerwin Terpstra.
  * @version 1.0.
  * @since 02-18-2021.
  */
 public class BoardUtils {
-	
 	// Declare and initialize member variables.
 	public static final int NUM_TILES = 64;
 	public static final int NUM_TILES_PER_ROW = 8;
@@ -28,8 +26,8 @@ public class BoardUtils {
 	/**
 	 * Method that creates and returns an array of booleans containing eight 'trues' which represent
 	 * the eight tiles of a column.
-	 * @param int columnNumber number of a column of the board.
-	 * @return boolean[] array of eight boolean 'trues'.
+	 * @param int columnNumber the coordinate where the column starts (the first tile of the row).
+	 * @return boolean[] column array of eight boolean 'trues'.
 	 */
 	private static boolean[] initColumn(int columnNumber) {
 		final boolean[] column = new boolean[NUM_TILES];	
@@ -40,6 +38,12 @@ public class BoardUtils {
 		return column;
 	}
 	
+	/**
+	 * Method that creates and returns an array of booleans containing eight 'trues' which represent
+	 * the eight tiles of a row.
+	 * @param int rowNumber the coordinate where the row starts (the first tile of the row).
+	 * @return boolean[] row array of eight boolean 'trues'.
+	 */
 	private static boolean[] initRow(int rowNumber) {
 		final boolean[] row = new boolean[NUM_TILES];
 		do {
