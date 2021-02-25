@@ -42,7 +42,6 @@ public class Pawn extends Piece {
 				continue;
 			}		
 			if(currentCandidateOffset == 8 && !board.getTile(candidateDestinationCoordinate).isTileOccupied()) {
-				// !!! TODO more work to do here !!!
 				legalMoves.add(new Move.MajorMove(board, this, candidateDestinationCoordinate));
 			} else if(currentCandidateOffset == 16 && this.isFirstMove() && 
 					(BoardUtils.SECOND_ROW[this.piecePosition] && this.getPieceAlliance().isBlack()) ||
@@ -58,7 +57,6 @@ public class Pawn extends Piece {
 				if(board.getTile(candidateDestinationCoordinate).isTileOccupied()) {
 					final Piece pieceOnCandidate = board.getTile(candidateDestinationCoordinate).getPiece();
 					if(this.pieceAlliance != pieceOnCandidate.getPieceAlliance()) {
-						// !!! TODO more to do here !!! 
 						legalMoves.add(new Move.MajorMove(board, this, candidateDestinationCoordinate));
 					}
 				}				
@@ -68,7 +66,6 @@ public class Pawn extends Piece {
 				if(board.getTile(candidateDestinationCoordinate).isTileOccupied()) {
 					final Piece pieceOnCandidate = board.getTile(candidateDestinationCoordinate).getPiece();
 					if(this.pieceAlliance != pieceOnCandidate.getPieceAlliance()) {
-						// !!! TODO more to do here !!! 
 						legalMoves.add(new Move.MajorMove(board, this, candidateDestinationCoordinate));
 					}
 				}	
@@ -78,11 +75,21 @@ public class Pawn extends Piece {
 		return legalMoves;
 	}
 	
+	/**
+	 * Overridden method that creates a new pawn from the given alliance and on the given coordinate.
+	 * @param Move move an instance of Move.
+	 * @return Pawn a new instance of Pawn.
+	 */
 	@Override
 	public Pawn movePiece(Move move) {
 		return new Pawn(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
 	}
 	
+	/**
+	 * Overridden method that returns a String representing a pawn piece.
+	 * The value of the String is defined in the PieceType enum.
+	 * @return String representing a pawn piece.
+	 */
 	@Override
 	public String toString() {
 		return PieceType.PAWN.toString();

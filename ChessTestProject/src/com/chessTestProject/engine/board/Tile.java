@@ -1,14 +1,15 @@
 // User-defined package.
 package com.chessTestProject.engine.board;
 
+// Imported user-defined package.
+import com.chessTestProject.engine.pieces.Piece;
+
 // Imported built-in packages.
 import java.util.HashMap;
 import java.util.Map;
 
-import com.chessTestProject.engine.pieces.Piece;
-
 /**
- * Abstract class that creates the tiles of a board.
+ * Abstract class that defines and creates a tile of a board.
  * @author Gerwin Terpstra.
  * @version 1.0.
  * @since 02-18-2021.
@@ -27,26 +28,33 @@ public abstract class Tile {
 	}
 	
 	// Declare abstract methods.
-	public boolean isTileOccupied() {
-		// TODO Auto-generated method stub
-		return false;
-	}	
 	public abstract Piece getPiece();
 	
+	/**
+	 * Helper method that returns a boolean false by default.
+	 * @return boolean false.
+	 */
+	public boolean isTileOccupied() {
+		return false;
+	}	
+	
+	/**
+	 * Method that returns the coordinate of the tile.
+	 * @return int the coordinate of this Tile object.
+	 */
 	public int getTileCoordinate() {
 		return this.tileCoordinate;
 	}
 	
 	/**
 	 * Method that creates a map of empty tiles that resembles a playing board.
-	 * @return Map of 64 objects of EmptyTile.
+	 * @return Map of 64 EmptyTile objects.
 	 */
 	private static Map<Integer, EmptyTile> createAllPossibleEmptyTiles() {
 		final Map<Integer, EmptyTile> emptyTileMap = new HashMap<>();		
 		for(int i = 0; i < BoardUtils.NUM_TILES; i++) {
 			emptyTileMap.put(i, new EmptyTile(i));
 		}
-		// !!! Maybe use the class ImmutableMap for this return statement (See video 2) !!!
 		return emptyTileMap;
 	}
 	
@@ -73,26 +81,28 @@ public abstract class Tile {
 			super(coordinate);
 		}
 		
+		/**
+		 * Overridden method that returns a hyphen of the String type to represent an empty tile.
+		 * return String a hyphen that represents an empty tile.
+		 */
 		@Override
 		public String toString() {
 			return "-";
 		}
 		
 		/**
-		 * Method that returns a boolean false because an empty tile is not occupied.		
+		 * Helper method that returns a boolean false by default.
 		 * @return boolean false.
 		 */
-		
 		@Override
 		public boolean isTileOccupied() {
 			return false;
 		}
 		
 		/**
-		 * Method that returns null because an empty tile does not contain a piece.
+		 * Helper method that returns a null by default.
 		 * @return null.
 		 */
-		
 		@Override
 		public Piece getPiece() {
 			return null;
@@ -100,22 +110,28 @@ public abstract class Tile {
 	}
 	
 	/**
-	 * Nested subclass that creates an occupied tile. 
+	 * Nested subclass that defines and creates an occupied tile. 
 	 * @author Gerwin Terpstra.
 	 * @version 1.0.
 	 * @since 02-18-2021.
 	 */
 	public static final class OccupiedTile extends Tile {
-		
-		// Declare variable.
+		// Declare member variables.
 		private final Piece pieceOnTile;
 		
 		// Constructor.		
 		private OccupiedTile(int tileCoordinate, final Piece pieceOnTile) {
 			super(tileCoordinate);
+			// Initialize member variables.
 			this.pieceOnTile = pieceOnTile;
 		}
 		
+		/**
+		 * Overridden method that returns a String representing a tile occupied with a piece.
+		 * If the piece belongs to the black alliance it will be in lowercase, otherwise it will be in uppercase.
+		 * The value of the String depends on the piece that occupies the tile (which is defined in the PieceType enum).
+		 * @return String representing a tile occupied with a pice.
+		 */
 		@Override
 		public String toString() {
 			return getPiece().getPieceAlliance().isBlack() ? getPiece().toString().toLowerCase() :
@@ -123,7 +139,7 @@ public abstract class Tile {
 		}
 		
 		/**
-		 * Method that returns a boolean true because an occupied tile is occupied.
+		 * Helper method that returns a boolean true by default.
 		 * @return boolean true.
 		 */
 		@Override

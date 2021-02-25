@@ -8,7 +8,7 @@ package com.chessTestProject.engine.board;
  * @since 02-18-2021.
  */
 public class BoardUtils {
-	// Declare and initialize member variables.
+	// Declare and initialize member constant variables.
 	public static final int NUM_TILES = 64;
 	public static final int NUM_TILES_PER_ROW = 8;
 	public static final boolean[] FIRST_COLUMN = initColumn(0);	

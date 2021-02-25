@@ -32,7 +32,7 @@ public class Knight extends Piece {
 	}
 	
 	/**
-	 * Method that defines and returns a list of all the legal moves a knight can make distinguished by a normal move and an attacking move.
+	 * Overriden method that defines and returns a list of all the legal moves a knight can make distinguished by a normal move and an attacking move.
 	 * @param final Board board the board where the piece is going to play on.
 	 * @return List<Move> collection of all the legal moves a knight can make.
 	 */
@@ -64,11 +64,21 @@ public class Knight extends Piece {
 		return legalMoves;		
 	}	
 	
+	/**
+	 * Overridden method that creates a new knight from the given alliance and on the given coordinate.
+	 * @param Move move an instance of Move.
+	 * @return Knight a new instance of Knight.
+	 */
 	@Override
 	public Knight movePiece(Move move) {
 		return new Knight(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
 	}
 	
+	/**
+	 * Overridden method that returns a String representing a knight piece.
+	 * The value of the String is defined in the PieceType enum.
+	 * @return String representing a knight piece.
+	 */
 	@Override
 	public String toString() {
 		return PieceType.KNIGHT.toString();

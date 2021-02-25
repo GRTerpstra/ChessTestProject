@@ -9,7 +9,6 @@ import com.chessTestProject.engine.board.Move;
 import com.chessTestProject.engine.board.Tile;
 import com.chessTestProject.engine.board.Move.AttackMove;
 import com.chessTestProject.engine.board.Move.MajorMove;
-import com.chessTestProject.engine.pieces.Piece.PieceType;
 
 // Imported built-in packages.
 import java.util.ArrayList;
@@ -17,14 +16,13 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * Class TODO
+ * Class that creates a king and defines all the legal moves a king can make.
  * @author Gerwin Terpstra.
  * @version 1.0
  * @since 02-22-2021
  */
 public class King extends Piece{
-	
-	// Declare and initialize constant member variable.
+	// Declare and initialize constant member variables.
 	private final static int[] CANDIDATE_MOVE_COORDINATE = {-9, -8, -7, -1, 1, 7, 8, 9};
 
 	// Constructor.
@@ -63,11 +61,21 @@ public class King extends Piece{
 		return legalMoves;
 	}	
 	
+	/**
+	 * Overridden method that creates a new king from the given alliance and on the given coordinate.
+	 * @param Move move an instance of Move.
+	 * @return King a new instance of King.
+	 */
 	@Override
 	public King movePiece(Move move) {
 		return new King(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
 	}
 	
+	/**
+	 * Overridden method that returns a String representing a king piece.
+	 * The value of the String is defined in the PieceType enum.
+	 * @return String representing a king piece.
+	 */
 	@Override
 	public String toString() {
 		return PieceType.KING.toString();

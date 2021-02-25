@@ -67,11 +67,21 @@ public class Rook extends Piece {
 		return legalMoves;
 	}
 	
+	/**
+	 * Overridden method that creates a new rook from the given alliance and on the given coordinate.
+	 * @param Move move an instance of Move.
+	 * @return Rook a new instance of Rook.
+	 */
 	@Override
 	public Rook movePiece(Move move) {
 		return new Rook(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
 	}
 
+	/**
+	 * Overridden method that returns a String representing a rook piece.
+	 * The value of the String is defined in the PieceType enum.
+	 * @return String representing a rook piece.
+	 */
 	@Override
 	public String toString() {
 		return PieceType.ROOK.toString();

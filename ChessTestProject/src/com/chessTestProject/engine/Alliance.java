@@ -16,7 +16,7 @@ import com.chessTestProject.engine.player.WhitePlayer;
 public enum Alliance {	
 	WHITE {
 		/**
-		 * Method that returns the direction to indicate which side of the board a pawn can move towards.
+		 * Overridden method that returns the direction to indicate which side of the board a pawn can move towards.
 		 * @return int number to calculate the coordinates a pawn can move to.
 		 */
 		@Override
@@ -25,7 +25,7 @@ public enum Alliance {
 		}
 
 		/**
-		 * Method that defines and returns that the alliance of the piece is white.
+		 * Overridden method that defines and returns that the alliance of the piece is white.
 		 * @return boolean true for a white piece.
 		 */
 		@Override
@@ -34,7 +34,7 @@ public enum Alliance {
 		}
 		
 		/**
-		 * Method that defines and returns that the alliance of a piece is not black.
+		 * Overridden method that defines and returns that the alliance of a piece is not black.
 		 * @return boolean false for a white piece.
 		 */
 		@Override
@@ -43,7 +43,7 @@ public enum Alliance {
 		}
 
 		/**
-		 * Method that returns the white player if it's the white players turn.
+		 * Overridden method that returns the white player if it's the white players turn.
 		 * @param WhitePlayer whitePlayer the player with the white alliance
 		 * @param BlackPlayer blackPlayer the player with the black alliance.
 		 * @return WhitePlayer whitePlayer the player with the white alliance.
@@ -56,7 +56,7 @@ public enum Alliance {
 	},	
 	BLACK {
 		/**
-		 * Method that returns the direction to indicate which side of the board a pawn can move towards.
+		 * Overridden method that returns the direction to indicate which side of the board a pawn can move towards.
 		 * @return int number to calculate the coordinates a pawn can move to.
 		 */
 		@Override
@@ -65,7 +65,7 @@ public enum Alliance {
 		}
 
 		/**
-		 * Method that defines and returns that the alliance of the piece is not white.
+		 * Overridden method that defines and returns that the alliance of the piece is not white.
 		 * @return boolean false for a black piece.
 		 */
 		@Override
@@ -74,7 +74,7 @@ public enum Alliance {
 		}
 
 		/**
-		 * Method that defines and returns that the alliance of the piece is black.
+		 * Overridden method that defines and returns that the alliance of the piece is black.
 		 * @return boolean true for a black piece.
 		 */
 		@Override
@@ -83,7 +83,7 @@ public enum Alliance {
 		}
 		
 		/**
-		 * Method that returns the black player if it's the black players turn.
+		 * Overridden method that returns the black player if it's the black players turn.
 		 * @param WhitePlayer whitePlayer the player with the white alliance
 		 * @param BlackPlayer blackPlayer the player with the black alliance.
 		 * @return BlackPlayer blackPlayer the player with the black alliance.

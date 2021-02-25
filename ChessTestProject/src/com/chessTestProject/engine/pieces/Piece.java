@@ -28,14 +28,19 @@ public abstract class Piece {
 	Piece(final PieceType pieceType, 
 			final int piecePosition, 
 			final Alliance pieceAlliance) {
+		
+		// Initialize member variables.
 		this.pieceType = pieceType;
 		this.pieceAlliance = pieceAlliance;
 		this.piecePosition = piecePosition;
-		// TODO more work here
 		this.isFirstMove = false;
 		this.cachedHashCode = computeHashCode();
 	}
 	
+	/**
+	 * Method that generates an ID of a piece based on its values.
+	 * @return int result the ID of the Piece object.
+	 */
 	private int computeHashCode() {
 		int result = pieceType.hashCode();
 		result = 31 * result + pieceAlliance.hashCode();
@@ -44,7 +49,13 @@ public abstract class Piece {
 		return result;	
 	}
 
-	// Overriding the equals() method here because we want object value equality, not object reference equality.
+	/**
+	 * Overridden method that checks if a given object has the same object values of this piece or not.
+	 * The Object.equals() method gets overridden here because it's needed to check for object value equality here,
+	 * not object reference equality.
+	 * @param Object other the object we want to compare to this Piece.
+	 * @return boolean true if the objects have the same value, false otherwise.
+	 */
 	@Override
 	public boolean equals(final Object other) {
 		if(this == other) {
@@ -58,26 +69,29 @@ public abstract class Piece {
 				pieceAlliance == otherPiece.getPieceAlliance() && isFirstMove == otherPiece.isFirstMove();
 	}
 	
+	/**
+	 * Overridden method that returns the cachedHashCode a.k.a. the ID of a piece.
+	 * @return int the cachedHashCode of this instance of Piece.
+	 */
 	@Override
 	public int hashCode() {
 		return this.cachedHashCode;
 	}
 	
 	/**
-	 * Method that returns the position of the piece on the board.
-	 * @return int piecePosition the position of the piece.
+	 * Method that returns the position coordinate of the piece on the board.
+	 * @return int piecePosition the position coordinate of the piece.
 	 */
 	public int getPiecePosition() {
 		return this.piecePosition;
 	}
 	
-	// Declare abstract method.
-	public abstract Collection<Move> calculateLegalMoves(final Board board);
-	
+	// Declare abstract methods.
+	public abstract Collection<Move> calculateLegalMoves(final Board board);	
 	public abstract Piece movePiece(Move move);
 	
 	/**
-	 * Abstract method that returns the piece's alliance.
+	 * Method that returns the piece's alliance.
 	 * @return Alliance pieceAlliance the alliance of the piece.
 	 */
 	public Alliance getPieceAlliance() {
@@ -85,25 +99,42 @@ public abstract class Piece {
 	}		
 	
 	/**
-	 * Abstract method that returns if it is the piece's first move of the game.
+	 * Method that returns if it is the piece's first move of the game.
 	 * @return boolean isFirstMove true if the piece has not moved yet, false if the piece has already moved at least once.
 	 */
 	public boolean isFirstMove() {
 		return this.isFirstMove;
 	}		
 	
+	/**
+	 * Method that returns the PieceType of the piece.
+	 * @return PieceType the type of the pieve.
+	 */
 	public PieceType getPieceType() {
 		return this.pieceType;
 	}
 	
+	/**
+	 * Enum that defines the type of a piece.
+	 * @author Gerwin Terpstra
+	 * @version 1.0
+	 * @since 02-22-2021.
+	 */
 	public enum PieceType {
-		
+		/**
+		 * Overridden method that returns a boolean false by default.
+		 * @return boolean false.
+		 */
 		PAWN("p") {
 			@Override
 			public boolean isKing() {
 				return false;
 			}
 
+			/**
+			 * Overridden method that returns a boolean false by default.
+			 * @return boolean false.
+			 */
 			@Override
 			public boolean isRook() {
 				// TODO Auto-generated method stub
@@ -111,78 +142,121 @@ public abstract class Piece {
 			}
 		},
 		KNIGHT("N") {
+			/**
+			 * Overridden method that returns a boolean false by default.
+			 * @return boolean false.
+			 */
 			@Override
 			public boolean isKing() {
 				return false;
 			}
 
+			/**
+			 * Overridden method that returns a boolean false by default.
+			 * @return boolean false.
+			 */
 			@Override
 			public boolean isRook() {
-				// TODO Auto-generated method stub
 				return false;
 			}
 		},
 		BISHOP("B") {
+			/**
+			 * Overridden method that returns a boolean false by default.
+			 * @return boolean false.
+			 */
 			@Override
 			public boolean isKing() {
 				return false;
 			}
 
+			/**
+			 * Overridden method that returns a boolean false by default.
+			 * @return boolean false.
+			 */
 			@Override
 			public boolean isRook() {
-				// TODO Auto-generated method stub
 				return false;
 			}
 		},
+		
+		/**
+		 * Overridden method that returns a boolean false by default.
+		 * @return boolean false.
+		 */
 		ROOK("R") {
 			@Override
 			public boolean isKing() {
 				return false;
 			}
 
+			/**
+			 * Overridden method that returns a boolean true by default.
+			 * @return boolean true.
+			 */
 			@Override
 			public boolean isRook() {
-				// TODO Auto-generated method stub
 				return true;
 			}
 		},
 		QUEEN("Q") {
+			/**
+			 * Overridden method that returns a boolean by default.
+			 * @return boolean false.
+			 */
 			@Override
 			public boolean isKing() {
 				return false;
 			}
 
+			/**
+			 * Overridden method that returns a boolean false by default.
+			 * @return boolean false.
+			 */
 			@Override
 			public boolean isRook() {
-				// TODO Auto-generated method stub
 				return false;
 			}
 		},
 		KING("K") {
+			/**
+			 * Overridden method that returns a boolean true by default.
+			 * @return boolean true.
+			 */
 			@Override
 			public boolean isKing() {
 				return true;
 			}
-
+			
+			/**
+			 * Overridden method that returns a boolean false by default.
+			 * @return boolean false.
+			 */
 			@Override
 			public boolean isRook() {
-				// TODO Auto-generated method stub
 				return false;
 			}
 		};
 		
+		// Declare member variables.
 		final String pieceName;
+		
+		// Constructor.
 		PieceType(final String pieceName) {
 			this.pieceName = pieceName;
 		}
 		
+		/**
+		 * Overridden method that returns a String representing a specific piece type.
+		 * @return String representing a specific piece type.
+		 */
 		@Override
 		public String toString() {
 			return this.pieceName;
 		}
 		
+		// Declare abstract methods.
 		public abstract boolean isKing();
-
 		public abstract boolean isRook();
 	}
 }

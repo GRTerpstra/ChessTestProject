@@ -23,7 +23,7 @@ import java.util.List;
  */
 public class Bishop extends Piece {
 
-	// declare and initialize constant member variable.
+	// declare and initialize constant member variables.
 	private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-9, -7, 7, 9};
 	
 	// Constructor.
@@ -62,10 +62,14 @@ public class Bishop extends Piece {
 				}
 			}
 		}
-		// !!! Maybe immutable instead see video 7 !!!
 		return legalMoves;
 	}
 	
+	/**
+	 * Overridden method that returns a String representing a bishop piece.
+	 * The value of the String is defined in the PieceType enum.
+	 * @return String representing a bishop piece.
+	 */
 	@Override
 	public String toString() {
 		return PieceType.BISHOP.toString();
@@ -91,6 +95,11 @@ public class Bishop extends Piece {
 		return BoardUtils.EIGHT_COLUMN[currentPosition] && (candidateOffset == -7 || candidateOffset == 9);
 	}
 
+	/**
+	 * Overridden method that creates a new bishop from the given alliance and on the given coordinate.
+	 * @param Move move an instance of Move.
+	 * @return Bishop a new instance of Bishop.
+	 */
 	@Override
 	public Bishop movePiece(Move move) {
 		return new Bishop(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());

@@ -67,11 +67,21 @@ public class Queen extends Piece{
 		return legalMoves;
 	}
 	
+	/**
+	 * Overridden method that creates a new queen from the given alliance and on the given coordinate.
+	 * @param Move move an instance of Move.
+	 * @return Queen a new instance of Queen.
+	 */
 	@Override
 	public Queen movePiece(Move move) {
 		return new Queen(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
 	}
 	
+	/**
+	 * Overridden method that returns a String representing a queen piece.
+	 * The value of the String is defined in the PieceType enum.
+	 * @return String representing a queen piece.
+	 */
 	@Override
 	public String toString() {
 		return PieceType.QUEEN.toString();

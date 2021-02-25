@@ -11,12 +11,10 @@ import com.chessTestProject.engine.board.Board;
  * @Since 02-22-2021
  */
 public class JChess {
-	
 	public static void main(String[] args) {	
 		// Declare and initialize local variables.
 		Board board = Board.createStandardBoard();		
 		
 		System.out.println(board);		
 	}
-	
 }
