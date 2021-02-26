@@ -1,13 +1,13 @@
 // User-defined package.
 package com.chessTestProject.engine.pieces;
 
-// Imported user-defined packages.
+// Imported user-defined classes.
 import com.chessTestProject.engine.Alliance;
 import com.chessTestProject.engine.board.Board;
 import com.chessTestProject.engine.board.BoardUtils;
 import com.chessTestProject.engine.board.Move;
 
-// Imported built-in packages.
+// Imported built-in classes.
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -44,8 +44,8 @@ public class Pawn extends Piece {
 			if(currentCandidateOffset == 8 && !board.getTile(candidateDestinationCoordinate).isTileOccupied()) {
 				legalMoves.add(new Move.MajorMove(board, this, candidateDestinationCoordinate));
 			} else if(currentCandidateOffset == 16 && this.isFirstMove() && 
-					(BoardUtils.SECOND_ROW[this.piecePosition] && this.getPieceAlliance().isBlack()) ||
-					(BoardUtils.SEVENTH_ROW[this.piecePosition] && this.getPieceAlliance().isWhite())) {
+					(BoardUtils.SEVENTH_RANK[this.piecePosition] && this.getPieceAlliance().isBlack()) ||
+					(BoardUtils.SECOND_RANK[this.piecePosition] && this.getPieceAlliance().isWhite())) {
 				final int behindCandidateDestinationCoordinate = this.piecePosition + (this.pieceAlliance.getDirection() * 8);
 				if(!board.getTile(behindCandidateDestinationCoordinate).isTileOccupied() && 
 						!board.getTile(candidateDestinationCoordinate).isTileOccupied()) {

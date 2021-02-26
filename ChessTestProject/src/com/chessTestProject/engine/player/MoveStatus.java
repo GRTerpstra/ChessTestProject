@@ -15,7 +15,7 @@ public enum MoveStatus {
 		 * @return boolean true;
 		 */
 		@Override
-		boolean isDone() {
+		public boolean isDone() {
 			return true;
 		}
 	},
@@ -26,7 +26,7 @@ public enum MoveStatus {
 		 * @return boolean false;
 		 */
 		@Override
-		boolean isDone() {
+		public boolean isDone() {
 			return false;
 		}
 	}, LEAVE_PLAYER_IN_CHECK {
@@ -36,11 +36,11 @@ public enum MoveStatus {
 		 * @return boolean false;
 		 */
 		@Override
-		boolean isDone() {
+		public boolean isDone() {
 			// TODO Auto-generated method stub
 			return false;
 		}
 	};	
 	// Declare abstract methods.
-	abstract boolean isDone();
+	public abstract boolean isDone();
 }

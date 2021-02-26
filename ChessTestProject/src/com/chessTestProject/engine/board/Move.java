@@ -1,7 +1,7 @@
 // User-defined package
 package com.chessTestProject.engine.board;
 
-//imported user-defined packages.
+// Imported user-defined classes.
 import com.chessTestProject.engine.board.Board.Builder;
 import com.chessTestProject.engine.pieces.Pawn;
 import com.chessTestProject.engine.pieces.Piece;

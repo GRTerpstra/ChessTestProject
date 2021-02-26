@@ -1,7 +1,7 @@
 // User-defined package.
 package com.chessTestProject.engine.player;
 
-// Imported user-defined packages.
+// Imported user-defined classes.
 import com.chessTestProject.engine.Alliance;
 import com.chessTestProject.engine.board.Board;
 import com.chessTestProject.engine.board.Move;
@@ -9,7 +9,7 @@ import com.chessTestProject.engine.board.Tile;
 import com.chessTestProject.engine.pieces.Piece;
 import com.chessTestProject.engine.pieces.Rook;
 
-// Imported built-in packages.
+// Imported built-in classes.
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -89,7 +89,10 @@ public class BlackPlayer extends Player {
 				// Declare and initialize local variables.
 				final Tile rookTile = this.board.getTile(0);
 				
-				if(rookTile.isTileOccupied() && rookTile.getPiece().isFirstMove()) {
+				if(rookTile.isTileOccupied() && rookTile.getPiece().isFirstMove() &&
+					Player.calculateAttacksOnTile(2,  opponentsLegals).isEmpty() &&
+					Player.calculateAttacksOnTile(3,  opponentsLegals).isEmpty() &&
+					rookTile.getPiece().getPieceType().isRook()) {
 					kingCastles.add(new Move.QueenSideCastleMove(this.board,
 																	this.playerKing,
 																	2,

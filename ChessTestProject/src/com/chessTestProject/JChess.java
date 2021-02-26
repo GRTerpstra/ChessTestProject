@@ -1,8 +1,9 @@
 // User-defined package.
-package com.chessTestProject.engine;
+package com.chessTestProject;
 
-// Imported user-defined packages.
+// Imported user-defined classes.
 import com.chessTestProject.engine.board.Board;
+import com.chessTestProject.gui.Table;
 
 /**
  * Main class of the application. 
@@ -16,5 +17,7 @@ public class JChess {
 		Board board = Board.createStandardBoard();		
 		
 		System.out.println(board);		
+		
+		Table table = new Table();
 	}
 }

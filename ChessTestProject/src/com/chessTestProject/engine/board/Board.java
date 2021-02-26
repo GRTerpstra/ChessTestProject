@@ -1,14 +1,14 @@
 // User-defined package.
 package com.chessTestProject.engine.board;
 
-// Imported user-defined packages.
+// Imported user-defined classes.
 import com.chessTestProject.engine.Alliance;
 import com.chessTestProject.engine.pieces.*;
 import com.chessTestProject.engine.player.BlackPlayer;
 import com.chessTestProject.engine.player.Player;
 import com.chessTestProject.engine.player.WhitePlayer;
 
-//Imported built-in packages.
+// Imported built-in classes.
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -214,6 +214,7 @@ public class Board {
 		builder.setPiece(new Bishop(61, Alliance.WHITE));
 		builder.setPiece(new Knight(62, Alliance.WHITE));
 		builder.setPiece(new Rook(63, Alliance.WHITE));
+		builder.setMoveMaker(Alliance.WHITE);
 		return builder.build();
 	}
 	

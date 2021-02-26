@@ -1,7 +1,7 @@
 // User-defined package.
 package com.chessTestProject.engine.pieces;
 
-// Imported user-defined packages.
+// Imported user-defined classes.
 import com.chessTestProject.engine.Alliance;
 import com.chessTestProject.engine.board.Board;
 import com.chessTestProject.engine.board.BoardUtils;
@@ -10,7 +10,7 @@ import com.chessTestProject.engine.board.Tile;
 import com.chessTestProject.engine.board.Move.AttackMove;
 import com.chessTestProject.engine.board.Move.MajorMove;
 
-// Imported built-in packages.
+// Imported built-in classes.
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;

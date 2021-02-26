@@ -1,7 +1,7 @@
 // User-defined package.
 package com.chessTestProject.engine;
 
-// Imported user-defined packages.
+// Imported user-defined classes.
 import com.chessTestProject.engine.player.BlackPlayer;
 import com.chessTestProject.engine.player.Player;
 import com.chessTestProject.engine.player.WhitePlayer;

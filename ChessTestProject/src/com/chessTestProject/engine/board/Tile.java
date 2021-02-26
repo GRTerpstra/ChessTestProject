@@ -1,10 +1,10 @@
 // User-defined package.
 package com.chessTestProject.engine.board;
 
-// Imported user-defined package.
+// Imported user-defined classes.
 import com.chessTestProject.engine.pieces.Piece;
 
-// Imported built-in packages.
+// Imported built-in classes.
 import java.util.HashMap;
 import java.util.Map;
 

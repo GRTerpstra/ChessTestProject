@@ -1,14 +1,14 @@
 // User-defined package.
 package com.chessTestProject.engine.player;
 
-// Imported user-defined packages.
+// Imported user-defined classes.
 import com.chessTestProject.engine.Alliance;
 import com.chessTestProject.engine.board.Board;
 import com.chessTestProject.engine.board.Move;
 import com.chessTestProject.engine.pieces.King;
 import com.chessTestProject.engine.pieces.Piece;
 
-// Imported built-in packages.
+// Imported built-in classes.
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
