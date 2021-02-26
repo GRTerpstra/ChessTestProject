@@ -8,6 +8,7 @@ import com.chessTestProject.engine.board.Board;
 import com.chessTestProject.engine.board.Move;
 // !!! Have to use '*' because it's a nested class !!!
 import com.chessTestProject.engine.board.Move.*;
+import com.chessTestProject.engine.pieces.Piece.PieceType;
 import com.chessTestProject.engine.board.Tile;
 
 // Imported built-in classes.
@@ -27,8 +28,14 @@ public class Knight extends Piece {
 	private final static int[] CANDIDATE_MOVE_COORDINATES = { -17, -15, -10, -6, 6, 10, 15, 17};
 
 	// Constructor
-	public Knight(final int piecePosition,final Alliance pieceAlliance) {
-		super(PieceType.KNIGHT, piecePosition, pieceAlliance);
+	public Knight(final int piecePosition,
+			final Alliance pieceAlliance) {
+		super(PieceType.KNIGHT, piecePosition, pieceAlliance, true);
+	}
+	public Knight(final int piecePosition, 
+					final Alliance pieceAlliance, 
+					final boolean isFirstMove) {
+		super(PieceType.KNIGHT, piecePosition, pieceAlliance, isFirstMove);
 	}
 	
 	/**

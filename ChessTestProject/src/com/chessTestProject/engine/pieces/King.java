@@ -9,6 +9,7 @@ import com.chessTestProject.engine.board.Move;
 import com.chessTestProject.engine.board.Tile;
 import com.chessTestProject.engine.board.Move.AttackMove;
 import com.chessTestProject.engine.board.Move.MajorMove;
+import com.chessTestProject.engine.pieces.Piece.PieceType;
 
 // Imported built-in classes.
 import java.util.ArrayList;
@@ -26,9 +27,15 @@ public class King extends Piece{
 	private final static int[] CANDIDATE_MOVE_COORDINATE = {-9, -8, -7, -1, 1, 7, 8, 9};
 
 	// Constructor.
-	public King(final int piecePosition,final Alliance pieceAlliance) {
-		super(PieceType.KING, piecePosition, pieceAlliance);
+	public King(final int piecePosition,
+			final Alliance pieceAlliance) {
+		super(PieceType.KING, piecePosition, pieceAlliance, true);
 	}
+	public King(final int piecePosition, 
+				final Alliance pieceAlliance, 
+				final boolean isFirstMove) {
+	super(PieceType.KING, piecePosition, pieceAlliance, isFirstMove);
+}
 	
 	/**
 	 * Method that defines and returns a list of all the legal moves a king can make distinguished by a normal move and an attacking move.

@@ -14,9 +14,10 @@ import com.chessTestProject.gui.Table;
 public class JChess {
 	public static void main(String[] args) {	
 		// Declare and initialize local variables.
-		Board board = Board.createStandardBoard();		
+		Board board = Board.createStandardBoard();
 		
-		System.out.println(board);		
+		
+		System.out.println(board);
 		
 		Table table = new Table();
 	}

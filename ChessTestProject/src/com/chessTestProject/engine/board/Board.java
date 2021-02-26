@@ -108,6 +108,17 @@ public class Board {
 	public Collection<Piece> getWhitePieces() {
 		return this.whitePieces;
 	}
+	
+	/**
+	 * Method that returns an ArrayList with all the legal moves that every piece on the board can make.
+	 * @return ArrayList<Move> allLegalMoves an ArrayList of all the legal moves that can be made in the current state of the board. 
+	 */
+	public Iterable<Move> getAllLegalMoves() {
+		List<Move> allLegalMoves = new ArrayList<>();
+		allLegalMoves.addAll(this.whitePlayer.getLegalMoves());
+		allLegalMoves.addAll(this.blackPlayer.getLegalMoves());
+		return allLegalMoves;
+	}	
 
 	/**
 	 * Method that returns a list of all the legal moves that any of the pieces on the board can make.
@@ -177,6 +188,7 @@ public class Board {
 	 */
 	public static Board createStandardBoard() {
 		//Declare and initialize local variables.
+		
 		final Builder builder = new Builder();
 		
 		// Black pieces.
@@ -272,15 +284,4 @@ public class Board {
 			this.enPassantPawn = enPassantPawn;
 		}
 	}
-
-	/**
-	 * Method that returns an ArrayList with all the legal moves that every piece on the board can make.
-	 * @return ArrayList<Move> allLegalMoves an ArrayList of all the legal moves that can be made in the current state of the board. 
-	 */
-	public Iterable<Move> getAllLegalMoves() {
-		List<Move> allLegalMoves = new ArrayList<>();
-		allLegalMoves.addAll(this.whitePlayer.getLegalMoves());
-		allLegalMoves.addAll(this.blackPlayer.getLegalMoves());
-		return allLegalMoves;
-	}	
 }

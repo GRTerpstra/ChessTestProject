@@ -27,13 +27,14 @@ public abstract class Piece {
 	// Constructor.
 	Piece(final PieceType pieceType, 
 			final int piecePosition, 
-			final Alliance pieceAlliance) {
+			final Alliance pieceAlliance,
+			final boolean isFirstMove) {
 		
 		// Initialize member variables.
 		this.pieceType = pieceType;
 		this.pieceAlliance = pieceAlliance;
 		this.piecePosition = piecePosition;
-		this.isFirstMove = false;
+		this.isFirstMove = isFirstMove;
 		this.cachedHashCode = computeHashCode();
 	}
 	

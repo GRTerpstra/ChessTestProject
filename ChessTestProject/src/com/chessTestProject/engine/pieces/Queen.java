@@ -9,6 +9,7 @@ import com.chessTestProject.engine.board.Move;
 import com.chessTestProject.engine.board.Tile;
 import com.chessTestProject.engine.board.Move.AttackMove;
 import com.chessTestProject.engine.board.Move.MajorMove;
+import com.chessTestProject.engine.pieces.Piece.PieceType;
 
 // Imported built-in classes.
 import java.util.ArrayList;
@@ -27,8 +28,14 @@ public class Queen extends Piece{
 	private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-9, -8, -7, -1, 1, 7, 8, 9};
 	
 	// Constructor.
-	public Queen(final int piecePosition,final Alliance pieceAlliance) {		
-		super(PieceType.QUEEN, piecePosition, pieceAlliance);
+	public Queen(final int piecePosition,
+					final Alliance pieceAlliance) {		
+		super(PieceType.QUEEN, piecePosition, pieceAlliance, true);
+	}
+	public Queen(final int piecePosition, 
+					final Alliance pieceAlliance, 
+					final boolean isFirstMove) {
+		super(PieceType.QUEEN, piecePosition, pieceAlliance, isFirstMove);
 	}
 
 	/**
