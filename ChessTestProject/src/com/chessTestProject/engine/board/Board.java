@@ -3,6 +3,7 @@ package com.chessTestProject.engine.board;
 
 // Imported user-defined classes.
 import com.chessTestProject.engine.Alliance;
+import com.chessTestProject.engine.board.Move.MoveFactory;
 import com.chessTestProject.engine.pieces.*;
 import com.chessTestProject.engine.player.BlackPlayer;
 import com.chessTestProject.engine.player.Player;
@@ -31,6 +32,7 @@ public class Board {
 	private final WhitePlayer whitePlayer;
 	private final BlackPlayer blackPlayer;
 	private final Player currentPlayer;
+	private final Move transitionMove;
 	
 	// Constructor.
 	private Board(final Builder builder) {
@@ -47,6 +49,7 @@ public class Board {
 		this.whitePlayer = new WhitePlayer(this, whiteStandardLegalMoves, blackStandardLegalMoves);
 		this.blackPlayer = new BlackPlayer(this, whiteStandardLegalMoves, blackStandardLegalMoves);
 		this.currentPlayer = builder.nextMoveMaker.choosePlayer(this.whitePlayer, this.blackPlayer);
+		this.transitionMove = builder.transitionMove != null ? builder.transitionMove : MoveFactory.getNullMove();
 	}
 	
 	/**
@@ -107,6 +110,10 @@ public class Board {
 	 */	
 	public Collection<Piece> getWhitePieces() {
 		return this.whitePieces;
+	}
+	
+	public Move getTransitionMove() {
+		return this.transitionMove;
 	}
 	
 	/**

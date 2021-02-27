@@ -115,6 +115,10 @@ public abstract class Piece {
 		return this.pieceType;
 	}
 	
+	public int getPieceValue() {
+		return this.pieceType.getPieceValue();
+	}
+	
 	/**
 	 * Enum that defines the type of a piece.
 	 * @author Gerwin Terpstra
@@ -126,7 +130,7 @@ public abstract class Piece {
 		 * Overridden method that returns a boolean false by default.
 		 * @return boolean false.
 		 */
-		PAWN("p") {
+		PAWN("p", 100) {
 			@Override
 			public boolean isKing() {
 				return false;
@@ -142,7 +146,7 @@ public abstract class Piece {
 				return false;
 			}
 		},
-		KNIGHT("N") {
+		KNIGHT("N", 300) {
 			/**
 			 * Overridden method that returns a boolean false by default.
 			 * @return boolean false.
@@ -161,7 +165,7 @@ public abstract class Piece {
 				return false;
 			}
 		},
-		BISHOP("B") {
+		BISHOP("B", 300) {
 			/**
 			 * Overridden method that returns a boolean false by default.
 			 * @return boolean false.
@@ -185,7 +189,7 @@ public abstract class Piece {
 		 * Overridden method that returns a boolean false by default.
 		 * @return boolean false.
 		 */
-		ROOK("R") {
+		ROOK("R", 500) {
 			@Override
 			public boolean isKing() {
 				return false;
@@ -200,7 +204,7 @@ public abstract class Piece {
 				return true;
 			}
 		},
-		QUEEN("Q") {
+		QUEEN("Q", 900) {
 			/**
 			 * Overridden method that returns a boolean by default.
 			 * @return boolean false.
@@ -219,7 +223,7 @@ public abstract class Piece {
 				return false;
 			}
 		},
-		KING("K") {
+		KING("K", 10000) {
 			/**
 			 * Overridden method that returns a boolean true by default.
 			 * @return boolean true.
@@ -240,13 +244,16 @@ public abstract class Piece {
 		};
 		
 		// Declare member variables.
-		final String pieceName;
+		private String pieceName;
+		private int pieceValue;
 		
 		// Constructor.
-		PieceType(final String pieceName) {
+		PieceType(final String pieceName, final int pieceValue) {
 			this.pieceName = pieceName;
+			this.pieceValue = pieceValue;
 		}
-		
+	
+
 		/**
 		 * Overridden method that returns a String representing a specific piece type.
 		 * @return String representing a specific piece type.
@@ -254,6 +261,10 @@ public abstract class Piece {
 		@Override
 		public String toString() {
 			return this.pieceName;
+		}
+		
+		public int getPieceValue() {
+			return this.pieceValue;
 		}
 		
 		// Declare abstract methods.

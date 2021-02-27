@@ -153,7 +153,28 @@ public abstract class Move {
 	 * @Since 02-18-2021.
 	 *
 	 */
-	// Video 22
+	
+	public static class MajorAttackMove extends AttackMove {
+		
+		public MajorAttackMove(final Board board,
+								final Piece pieceMoved,
+								final int destinationCoordinate,
+								final Piece pieceAttacked) {
+			super(board, pieceMoved, destinationCoordinate, pieceAttacked);
+		}
+		
+		@Override
+		public boolean equals(final Object other) {
+			return this == other || other instanceof MajorAttackMove && super.equals(other);
+		}
+		
+		@Override
+		public String toString() {
+			return movedPiece.getPieceType() + BoardUtils.getPositionAtCoordinate(this.destinationCoordinate);
+		}
+		
+	}
+	
 	public static final class MajorMove extends Move {
 		// Constructor.
 		public MajorMove(final Board board, 
@@ -217,16 +238,7 @@ public abstract class Move {
 			final AttackMove otherAttackMove = (AttackMove) other;
 			return super.equals(otherAttackMove) && getAttackedPiece().equals(otherAttackMove.getAttackedPiece());
 		}
-		
-		/**
-		 * Overridden helper method that returns a null by default.
-		 * @return Board null.
-		 */
-		@Override
-		public Board execute() {
-			return null;
-		}
-		
+				
 		/**
 		 * Overridden helper method that returns a boolean true by default.
 		 * @return boolean true.
@@ -253,12 +265,23 @@ public abstract class Move {
 	 * @since 02-23-2021.
 	 */
 	public static final class PawnMove extends Move {
-		// Constructor.
+			// Constructor.
 		public PawnMove(final Board board, 
 						final Piece movedPiece, 
 						final int destinationCoordinate) {
 			super(board, movedPiece, destinationCoordinate);
 		}
+		
+		@Override
+		public boolean equals(final Object other) {
+			return this == other || other instanceof PawnMove && super.equals(other);
+		}
+		
+		@Override
+		public String toString() {
+			return BoardUtils.getPositionAtCoordinate(this.destinationCoordinate);
+		}
+		
 	}
 	
 	/**
@@ -275,6 +298,16 @@ public abstract class Move {
 								final Piece attackedPiece) {
 			super(board, movedPiece, destinationCoordinate, attackedPiece);
 		}
+		
+		@Override
+		public boolean equals (final Object other) {
+			return this == other || other instanceof PawnAttackMove && super.equals(other);
+		}
+		@Override
+		public String toString() {
+			return BoardUtils.getPositionAtCoordinate(this.movedPiece.getPiecePosition()).substring(0, 1) + "x" +
+					BoardUtils.getPositionAtCoordinate(this.destinationCoordinate);
+		}
 	}
 	
 	/**
@@ -290,6 +323,29 @@ public abstract class Move {
 								final int destinationCoordinate,
 								final Piece attackedPiece) {
 			super(board, movedPiece, destinationCoordinate, attackedPiece);
+		}
+		
+		@Override
+		public boolean equals(final Object other) {
+			return this == other || other instanceof PawnEnPassantAttackMove && super.equals(other);
+		} 
+		
+		@Override
+		public Board execute() {
+			final Builder builder = new Builder();
+			for(final Piece piece : this.board.currentPlayer().getActivePieces()) {
+				if(!this.movedPiece.equals(piece)) {
+					builder.setPiece(piece);
+				}
+			}
+			for(final Piece piece : this.board.currentPlayer().getOpponent().getActivePieces()) {
+				if(!piece.equals(this.getAttackedPiece())) {
+					builder.setPiece(piece);
+				}
+			}
+			builder.setPiece(this.movedPiece.movePiece(this));
+			builder.setMoveMaker(this.board.currentPlayer().getOpponent().getAlliance());
+			return builder.build();
 		}
 	}
 	
@@ -332,6 +388,11 @@ public abstract class Move {
 			builder.setEnPassantPawn(movedPawn);
 			builder.setMoveMaker(this.board.currentPlayer().getOpponent().getAlliance());
 			return builder.build();
+		}
+		
+		@Override
+		public String toString() {
+			return BoardUtils.getPositionAtCoordinate(this.destinationCoordinate);
 		}
 	}
 	
@@ -402,6 +463,27 @@ public abstract class Move {
 			builder.setMoveMaker(this.board.currentPlayer().getOpponent().getAlliance());
 			return builder.build();
 		}
+		
+		@Override
+		public int hashCode() {
+			final int prime = 31;
+			int result = super.hashCode();
+			result = prime * result + this.castleRook.hashCode();
+			result = prime * result + this.castleRookDestination;
+			return result;
+		}
+		
+		@Override
+		public boolean equals(final Object other) {
+			if(this == other) {
+				return true;
+			}
+			if(!(other instanceof CastleMove)) {
+				return false;
+			}
+			final CastleMove otherCastleMove = (CastleMove) other;
+			return super.equals(otherCastleMove) && this.castleRook.equals(otherCastleMove.getCastleRook());
+ 		}
 	}
 	
 	/**
@@ -419,6 +501,10 @@ public abstract class Move {
 									final int castleRookStart,
 									final int castleRookDestination) {
 			super(board, movedPiece, destinationCoordinate, castleRook, castleRookStart, castleRookDestination);
+		}
+		@Override
+		public boolean equals(final Object other) {
+			return this == other || other instanceof KingSideCastleMove && super.equals(other);
 		}
 	
 		/**
@@ -448,6 +534,11 @@ public abstract class Move {
 			super(board, movedPiece, destinationCoordinate, castleRook, castleRookStart, castleRookDestination);
 		}
 		
+		@Override
+		public boolean equals(final Object other) {
+			return this == other || other instanceof QueenSideCastleMove && super.equals(other);
+		}
+		
 		/**
 		 * Overridden method that returns the chess notation of the 'queenside castle' move.
 		 * @return String a string representing the chess notation of 'queenside castling'.
@@ -467,7 +558,7 @@ public abstract class Move {
 	public static final class NullMove extends Move {
 		// Constructor.
 		public NullMove() {
-			super(null, -1);
+			super(null, 65);
 		}
 		
 		@Override
