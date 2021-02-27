@@ -150,7 +150,7 @@ public abstract class Player {
 	 * @return MoveTransition a new instance of MoveTransition containing the result of the simulation.
 	 */
 	public MoveTransition makeMove(final Move move) {
-		if(!isMoveLegal(move)) {
+		if(!this.legalMoves.contains(move)) {
 			return new MoveTransition(this.board, move, MoveStatus.ILLEGAL_MOVE);
 		}
 		// Declare and initialize local variables.

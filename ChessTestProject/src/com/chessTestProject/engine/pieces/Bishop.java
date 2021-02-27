@@ -9,6 +9,7 @@ import com.chessTestProject.engine.board.Move;
 import com.chessTestProject.engine.board.Tile;
 import com.chessTestProject.engine.board.Move.AttackMove;
 import com.chessTestProject.engine.board.Move.MajorMove;
+import com.chessTestProject.engine.pieces.Piece.PieceType;
 
 // Imported built-in classes.
 import java.util.ArrayList;
@@ -27,15 +28,15 @@ public class Bishop extends Piece {
 	private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-9, -7, 7, 9};
 	
 	// Constructor.
-	public Bishop(final int piecePosition, 
-			final Alliance pieceAlliance) {
-		super(PieceType.BISHOP, piecePosition, pieceAlliance, true);
-	}
-	public Bishop(final int piecePosition, 
-					final Alliance pieceAlliance, 
-					final boolean isFirstMove) {
-		super(PieceType.BISHOP, piecePosition, pieceAlliance, isFirstMove);
-	}
+	public Bishop(final Alliance pieceAlliance,
+				final int piecePosition) {
+		super(PieceType.BISHOP, pieceAlliance, piecePosition, true);
+	}	
+	public Bishop(final Alliance pieceAlliance,
+				final int piecePosition,
+				final boolean isFirstMove) {
+		super(PieceType.BISHOP, pieceAlliance, piecePosition, isFirstMove);
+}
 
 	/**
 	 * Method that defines and returns a list of valid moves a bishop can make distinguished by normal moves and attacking moves.
@@ -108,6 +109,6 @@ public class Bishop extends Piece {
 	 */
 	@Override
 	public Bishop movePiece(Move move) {
-		return new Bishop(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
+		return new Bishop(move.getMovedPiece().getPieceAlliance(), move.getDestinationCoordinate());
 	}
 }

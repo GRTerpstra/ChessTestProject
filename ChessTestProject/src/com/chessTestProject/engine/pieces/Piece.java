@@ -26,8 +26,8 @@ public abstract class Piece {
 	
 	// Constructor.
 	Piece(final PieceType pieceType, 
-			final int piecePosition, 
 			final Alliance pieceAlliance,
+			final int piecePosition, 			
 			final boolean isFirstMove) {
 		
 		// Initialize member variables.

@@ -28,14 +28,14 @@ public class Knight extends Piece {
 	private final static int[] CANDIDATE_MOVE_COORDINATES = { -17, -15, -10, -6, 6, 10, 15, 17};
 
 	// Constructor
-	public Knight(final int piecePosition,
-			final Alliance pieceAlliance) {
-		super(PieceType.KNIGHT, piecePosition, pieceAlliance, true);
-	}
-	public Knight(final int piecePosition, 
-					final Alliance pieceAlliance, 
+	public Knight(final Alliance pieceAlliance,
+					final int piecePosition) {
+		super(PieceType.KNIGHT, pieceAlliance, piecePosition, true);
+	}	
+	public Knight(final Alliance pieceAlliance,
+					final int piecePosition,
 					final boolean isFirstMove) {
-		super(PieceType.KNIGHT, piecePosition, pieceAlliance, isFirstMove);
+		super(PieceType.KNIGHT, pieceAlliance, piecePosition, isFirstMove);
 	}
 	
 	/**
@@ -78,7 +78,7 @@ public class Knight extends Piece {
 	 */
 	@Override
 	public Knight movePiece(Move move) {
-		return new Knight(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
+		return new Knight(move.getMovedPiece().getPieceAlliance(), move.getDestinationCoordinate());
 	}
 	
 	/**

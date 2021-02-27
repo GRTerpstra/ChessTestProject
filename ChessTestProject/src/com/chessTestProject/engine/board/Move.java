@@ -84,7 +84,7 @@ public abstract class Move {
 	 * @return int the current coordinate of the piece that is being moved.
 	 */
 	public int getCurrentCoordinate() {
-		return this.movedPiece.getPiecePosition();
+		return this.getMovedPiece().getPiecePosition();
 	}
 	
 	/**
@@ -398,7 +398,7 @@ public abstract class Move {
 			}
 			builder.setPiece(this.movedPiece.movePiece(this));
 			// TODO Look into the first move on normal pieces.
-			builder.setPiece(new Rook(this.castleRookDestination, this.castleRook.getPieceAlliance()));
+			builder.setPiece(new Rook(this.castleRook.getPieceAlliance(), this.castleRookDestination));
 			builder.setMoveMaker(this.board.currentPlayer().getOpponent().getAlliance());
 			return builder.build();
 		}
@@ -467,7 +467,22 @@ public abstract class Move {
 	public static final class NullMove extends Move {
 		// Constructor.
 		public NullMove() {
-			super(null, 65);
+			super(null, -1);
+		}
+		
+		@Override
+		public int getCurrentCoordinate() {
+			return -1;
+		}
+		
+		@Override
+		public int getDestinationCoordinate() {
+			return -1;
+		}
+		
+		@Override
+		public String toString() {
+			return "Null Move";
 		}
 		
 		/**
@@ -487,9 +502,16 @@ public abstract class Move {
 	 * @since 02-23-2021.
 	 */
 	public static class MoveFactory {
+		
+		private static final Move NULL_MOVE = new NullMove();
+		
 		// Constructor.
 		private MoveFactory() {
 			throw new RuntimeException("Not instantiable!");
+		}
+		
+		public static Move getNullMove() {
+			return NULL_MOVE;
 		}
 			
 		/**

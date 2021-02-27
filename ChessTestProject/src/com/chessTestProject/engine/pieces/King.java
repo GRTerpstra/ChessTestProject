@@ -27,14 +27,14 @@ public class King extends Piece{
 	private final static int[] CANDIDATE_MOVE_COORDINATE = {-9, -8, -7, -1, 1, 7, 8, 9};
 
 	// Constructor.
-	public King(final int piecePosition,
-			final Alliance pieceAlliance) {
-		super(PieceType.KING, piecePosition, pieceAlliance, true);
-	}
-	public King(final int piecePosition, 
-				final Alliance pieceAlliance, 
+	public King(final Alliance pieceAlliance,
+				final int piecePosition) {
+		super(PieceType.KING, pieceAlliance, piecePosition, true);
+	}	
+	public King(final Alliance pieceAlliance,
+				final int piecePosition,
 				final boolean isFirstMove) {
-	super(PieceType.KING, piecePosition, pieceAlliance, isFirstMove);
+		super(PieceType.KING, pieceAlliance, piecePosition, isFirstMove);
 }
 	
 	/**
@@ -75,7 +75,7 @@ public class King extends Piece{
 	 */
 	@Override
 	public King movePiece(Move move) {
-		return new King(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
+		return new King(move.getMovedPiece().getPieceAlliance(), move.getDestinationCoordinate());
 	}
 	
 	/**

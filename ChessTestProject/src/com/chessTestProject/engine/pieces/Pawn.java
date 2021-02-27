@@ -6,6 +6,7 @@ import com.chessTestProject.engine.Alliance;
 import com.chessTestProject.engine.board.Board;
 import com.chessTestProject.engine.board.BoardUtils;
 import com.chessTestProject.engine.board.Move;
+import com.chessTestProject.engine.pieces.Piece.PieceType;
 
 // Imported built-in classes.
 import java.util.ArrayList;
@@ -24,15 +25,15 @@ public class Pawn extends Piece {
 	private final static int[] CANDIDATE_MOVE_COORDINATE = {8, 16, 7, 9};
 	
 	// Constructor.
-	public Pawn(final int piecePosition, 
-				final Alliance pieceAlliance) {
-		super(PieceType.PAWN, piecePosition, pieceAlliance, true);
-	}
-	public Pawn(final int piecePosition, 
-				final Alliance pieceAlliance, 
+	public Pawn(final Alliance pieceAlliance,
+				final int piecePosition) {
+		super(PieceType.PAWN, pieceAlliance, piecePosition, true);
+	}	
+	public Pawn(final Alliance pieceAlliance,
+				final int piecePosition,
 				final boolean isFirstMove) {
-	super(PieceType.PAWN, piecePosition, pieceAlliance, isFirstMove);
-}
+		super(PieceType.PAWN, pieceAlliance, piecePosition, isFirstMove);
+	}
 	
 	/**
 	 * Method that defines and returns a list of all the legal moves a pawn can make distinguished by a normal move and an attacking move.
@@ -90,7 +91,7 @@ public class Pawn extends Piece {
 	 */
 	@Override
 	public Pawn movePiece(Move move) {
-		return new Pawn(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
+		return new Pawn(move.getMovedPiece().getPieceAlliance(), move.getDestinationCoordinate());
 	}
 	
 	/**

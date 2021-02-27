@@ -28,14 +28,14 @@ public class Rook extends Piece {
 	private final static int[] CANDIDATE_MOVE_VECTOR_COORDINATES = {-8, -1, 1, 8};	
 	
 	// Constructor.
-	public Rook(final int piecePosition,
-				final Alliance pieceAlliance) {
-		super(PieceType.ROOK, piecePosition, pieceAlliance, true);
+	public Rook(final Alliance pieceAlliance,
+				final int piecePosition) {
+		super(PieceType.ROOK, pieceAlliance, piecePosition, true);
 	}	
-	public Rook(final int piecePosition,
-				final Alliance pieceAlliance,
+	public Rook(final Alliance pieceAlliance,
+				final int piecePosition,
 				final boolean isFirstMove) {
-		super(PieceType.ROOK, piecePosition, pieceAlliance, isFirstMove);
+		super(PieceType.ROOK, pieceAlliance, piecePosition, isFirstMove);
 	}
 	
 	/**
@@ -80,7 +80,7 @@ public class Rook extends Piece {
 	 */
 	@Override
 	public Rook movePiece(Move move) {
-		return new Rook(move.getDestinationCoordinate(), move.getMovedPiece().getPieceAlliance());
+		return new Rook(move.getMovedPiece().getPieceAlliance(), move.getDestinationCoordinate());
 	}
 
 	/**
