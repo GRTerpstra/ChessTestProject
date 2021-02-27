@@ -108,8 +108,11 @@ public class Table {
 	}	
 	
 	private JMenu createPreferencesMenu() {
+		
 		final JMenu preferencesMenu = new JMenu("Preferences");
+		
 		final JMenuItem flipBoardMenuItem = new JMenuItem("Flip Board");
+		
 		flipBoardMenuItem.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
@@ -117,13 +120,14 @@ public class Table {
 				boardPanel.drawBoard(chessBoard);
 			}
 		});
+		
 		preferencesMenu.add(flipBoardMenuItem);
 		preferencesMenu.addSeparator();
 		
 		final JCheckBoxMenuItem legalMoveHighlighterCheckbox = new JCheckBoxMenuItem("Highlight legal Moves", false);
 		legalMoveHighlighterCheckbox.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(final ActionEvent e) {
 				highlightLegalMoves = legalMoveHighlighterCheckbox.isSelected();
 			}
 		});

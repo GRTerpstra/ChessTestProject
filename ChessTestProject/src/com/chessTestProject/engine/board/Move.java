@@ -79,6 +79,10 @@ public abstract class Move {
 		
 	}
 	
+	public Board getBoard() {
+		return this.board;
+	}
+	
 	/**
 	 * Method that returns the current coordinate of the piece that is going to be moved.
 	 * @return int the current coordinate of the piece that is being moved.
@@ -349,6 +353,61 @@ public abstract class Move {
 		}
 	}
 	
+	public static class PawnPromotion extends Move {
+		
+		final Move decoratedMove;
+		final Pawn promotedPawn;
+		
+		public PawnPromotion(final Move decoratedMove) {
+			super(decoratedMove.getBoard(), decoratedMove.getMovedPiece(), decoratedMove.getDestinationCoordinate());
+			this.decoratedMove = decoratedMove;
+			this.promotedPawn = (Pawn) decoratedMove.getMovedPiece();
+		}
+		
+		@Override
+		public int hashCode() {
+			return decoratedMove.hashCode() + (31 * promotedPawn.hashCode());
+		}
+		
+		@Override
+		public boolean equals(final Object other) {
+			return this == other || other instanceof PawnPromotion && (super.equals(other));
+		}
+		
+		@Override
+		public Board execute() {
+			
+			final Board pawnMovedBoard = this.decoratedMove.execute();
+			final Board.Builder builder = new Builder();
+			for(final Piece piece : pawnMovedBoard.currentPlayer().getActivePieces()) {
+				if(!this.promotedPawn.equals(piece)) {
+					builder.setPiece(piece);
+				}
+			}
+			for(final Piece piece : pawnMovedBoard.currentPlayer().getOpponent().getActivePieces()) {
+				builder.setPiece(piece);
+			}
+			builder.setPiece(this.promotedPawn.getPromotionPiece().movePiece(this));
+			builder.setMoveMaker(pawnMovedBoard.currentPlayer().getAlliance());
+			return builder.build();	
+		}
+		
+		@Override
+		public boolean isAttack() {
+			return this.decoratedMove.isAttack();
+		}
+		
+		@Override
+		public Piece getAttackedPiece() {
+			return this.decoratedMove.getAttackedPiece();
+		}
+		
+		@Override
+		public String toString() {
+			return "";
+		}
+	}
+	
 	/**
 	 * Class that defines and creates a move of a pawn performing a 'jump'.
 	 * @author Gerwin Terpstra. 
@@ -450,7 +509,7 @@ public abstract class Move {
 			final Builder builder = new Builder();
 			
 			for(final Piece piece : this.board.currentPlayer().getActivePieces()) {
-				if(!(this.movedPiece.equals(piece))) {
+				if(!this.movedPiece.equals(piece)) {
 					builder.setPiece(piece);
 				}
 			}

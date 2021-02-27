@@ -9,6 +9,7 @@ import com.chessTestProject.engine.board.Move;
 import com.chessTestProject.engine.board.Tile;
 import com.chessTestProject.engine.board.Move.AttackMove;
 import com.chessTestProject.engine.board.Move.MajorMove;
+import com.chessTestProject.engine.board.Move.MajorAttackMove;
 import com.chessTestProject.engine.pieces.Piece.PieceType;
 
 // Imported built-in classes.
@@ -62,7 +63,7 @@ public class Queen extends Piece{
 						final Piece pieceAtDestination = candidateDestinationTile.getPiece();
 						final Alliance pieceAlliance = pieceAtDestination.getPieceAlliance();						
 						if(this.pieceAlliance != pieceAlliance) {
-							legalMoves.add(new AttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));
+							legalMoves.add(new MajorAttackMove(board, this, candidateDestinationCoordinate, pieceAtDestination));
 						}
 						break;
 					}

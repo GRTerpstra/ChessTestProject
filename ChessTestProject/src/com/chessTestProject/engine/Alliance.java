@@ -1,6 +1,7 @@
 // User-defined package.
 package com.chessTestProject.engine;
 
+import com.chessTestProject.engine.board.BoardUtils;
 // Imported user-defined classes.
 import com.chessTestProject.engine.player.BlackPlayer;
 import com.chessTestProject.engine.player.Player;
@@ -22,6 +23,11 @@ public enum Alliance {
 		@Override
 		public int getDirection() {
 			return -1;
+		}
+		
+		@Override
+		public int getOppositeDirection() {
+			return 1;
 		}
 
 		/**
@@ -53,6 +59,11 @@ public enum Alliance {
 										final BlackPlayer blackPlayer) {
 			return whitePlayer;
 		}
+
+		@Override
+		public boolean isPawnPromotionSquare(int position) {
+			return BoardUtils.EIGHT_RANK[position];
+		}
 	},	
 	BLACK {
 		/**
@@ -62,6 +73,11 @@ public enum Alliance {
 		@Override
 		public int getDirection() {
 			return 1;
+		}
+		
+		@Override
+		public int getOppositeDirection() {
+			return -1;
 		}
 
 		/**
@@ -93,11 +109,18 @@ public enum Alliance {
 										final BlackPlayer blackPlayer) {
 			return blackPlayer;
 		}
+
+		@Override
+		public boolean isPawnPromotionSquare(int position) {
+			return BoardUtils.FIRST_RANK[position];
+		}
 	};
 	
 	// Declare abstract methods
 	public abstract int getDirection();
+	public abstract int getOppositeDirection();
 	public abstract boolean isWhite();
 	public abstract boolean isBlack();
 	public abstract Player choosePlayer(final WhitePlayer whitePlayer, final BlackPlayer blackPlayer);
+	public abstract boolean isPawnPromotionSquare(int position);
 }
