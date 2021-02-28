@@ -62,7 +62,7 @@ public class BlackPlayer extends Player {
 	 * @return List<Move> List of all the legal castle moves the player can make.
 	 */
 	@Override
-	protected Collection<Move> calculateKingCastles(final Collection<Move> playerLegals, 
+	public Collection<Move> calculateKingCastles(final Collection<Move> playerLegals, 
 													final Collection<Move> opponentsLegals) {
 		// Declare and initialize local variables.
 		final List<Move> kingCastles = new ArrayList<>();

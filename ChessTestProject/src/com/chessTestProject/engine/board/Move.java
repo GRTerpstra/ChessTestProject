@@ -150,13 +150,7 @@ public abstract class Move {
 		return builder.build();				
 	}
 
-	/**
-	 * Nested class that moves a piece around the board.
-	 * @author Gerwin Terpstra.
-	 * @version 1.0.
-	 * @Since 02-18-2021.
-	 *
-	 */
+
 	
 	public static class MajorAttackMove extends AttackMove {
 		
@@ -179,6 +173,13 @@ public abstract class Move {
 		
 	}
 	
+	/**
+	 * Nested class that moves a piece around the board.
+	 * @author Gerwin Terpstra.
+	 * @version 1.0.
+	 * @Since 02-18-2021.
+	 *
+	 */
 	public static final class MajorMove extends Move {
 		// Constructor.
 		public MajorMove(final Board board, 
@@ -509,7 +510,7 @@ public abstract class Move {
 			final Builder builder = new Builder();
 			
 			for(final Piece piece : this.board.currentPlayer().getActivePieces()) {
-				if(!this.movedPiece.equals(piece)) {
+				if(!this.movedPiece.equals(piece) && !this.castleRook.equals(piece)) {
 					builder.setPiece(piece);
 				}
 			}
@@ -518,7 +519,7 @@ public abstract class Move {
 			}
 			builder.setPiece(this.movedPiece.movePiece(this));
 			// TODO Look into the first move on normal pieces.
-			builder.setPiece(new Rook(this.castleRook.getPieceAlliance(), this.castleRookDestination));
+			builder.setPiece(new Rook(this.castleRook.getPieceAlliance(), this.castleRookDestination, false));
 			builder.setMoveMaker(this.board.currentPlayer().getOpponent().getAlliance());
 			return builder.build();
 		}

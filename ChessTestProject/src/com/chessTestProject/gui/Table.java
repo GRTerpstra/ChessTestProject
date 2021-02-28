@@ -26,6 +26,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JCheckBoxMenuItem;
@@ -37,6 +39,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import static javax.swing.SwingUtilities.isLeftMouseButton;
+import static javax.swing.SwingUtilities.isRightMouseButton;
 
 public class Table {
 	
@@ -69,8 +73,8 @@ public class Table {
 		this.chessBoard = Board.createStandardBoard();
 		this.boardPanel = new BoardPanel();
 		this.moveLog = new MoveLog();
-		this.boardDirection = boardDirection.NORMAL;
-		this.highlightLegalMoves = false;
+		this.boardDirection = BoardDirection.NORMAL;
+		this.highlightLegalMoves = true;
 		this.gameFrame.add(this.takenPiecesPanel, BorderLayout.WEST);
 		this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
 		this.gameFrame.add(this.gameHistoryPanel, BorderLayout.EAST);
@@ -115,16 +119,16 @@ public class Table {
 		
 		flipBoardMenuItem.addActionListener(new ActionListener() {
 			@Override
-			public void actionPerformed(final ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {
 				boardDirection = boardDirection.opposite();
 				boardPanel.drawBoard(chessBoard);
 			}
 		});
 		
 		preferencesMenu.add(flipBoardMenuItem);
-		preferencesMenu.addSeparator();
+		preferencesMenu.addSeparator();		
 		
-		final JCheckBoxMenuItem legalMoveHighlighterCheckbox = new JCheckBoxMenuItem("Highlight legal Moves", false);
+		final JCheckBoxMenuItem legalMoveHighlighterCheckbox = new JCheckBoxMenuItem("Highlight legal Moves", true);
 		legalMoveHighlighterCheckbox.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(final ActionEvent e) {
@@ -134,7 +138,9 @@ public class Table {
 		
 		preferencesMenu.add(legalMoveHighlighterCheckbox);
 		return preferencesMenu;
+		
 	}
+	  
 	
 	public enum BoardDirection {
 		
@@ -152,8 +158,8 @@ public class Table {
 		FLIPPED {
 			@Override
 			List<TilePanel> traverse(final List<TilePanel> boardTiles) {
-				Collections.reverse(boardTiles);
-				return boardTiles;
+				List<TilePanel> list = reverseList(boardTiles);
+				return list;
 			}
 
 			@Override
@@ -162,9 +168,21 @@ public class Table {
 			}
 		};
 	
-	abstract List<TilePanel> traverse(final List<TilePanel> boardTiles);
-	abstract BoardDirection opposite();
+		abstract List<TilePanel> traverse(final List<TilePanel> boardTiles);
+		abstract BoardDirection opposite();
 	}
+	
+	// Interesting piece of code that helped fix a bug with reversing flipping the board,
+	// if the traverse method can't use Collection.reverse(boardTiles), something with immutability.
+	public static<T> List<T> reverseList(List<T> list) {
+        return list.stream()
+                .collect(Collectors.collectingAndThen(
+                        Collectors.toCollection(ArrayList::new), lst -> {
+                            Collections.reverse(lst);
+                            return lst.stream();
+                        }
+                )).collect(Collectors.toCollection(ArrayList::new));
+    }
 
 	private class BoardPanel extends JPanel {
 		final List<TilePanel> boardTiles;
@@ -340,6 +358,17 @@ public class Table {
 		
 		private Collection<Move> pieceLegalMoves(final Board board) {
 			if(humanMovedPiece != null && humanMovedPiece.getPieceAlliance() == board.currentPlayer().getAlliance()) {
+				// Piece of code that does not really belong here, but is quick fix to the problem of
+				// castling moves not being highlighted as legal moves.
+				if(humanMovedPiece.getPieceType().isKing() && humanMovedPiece.isFirstMove()){
+				     final List<Move> includesCastleMoves = new ArrayList<>();
+				     includesCastleMoves.addAll(board.currentPlayer().calculateKingCastles(board.currentPlayer().getLegalMoves(), 
+				    		 					board.currentPlayer().getOpponent().getLegalMoves()));
+				     List<Move> newList = new ArrayList<Move>();
+				     newList.addAll(humanMovedPiece.calculateLegalMoves(board));
+				     newList.addAll(includesCastleMoves);	
+				     return newList;
+				  }
 				return humanMovedPiece.calculateLegalMoves(board);
 			}
 			return Collections.emptyList();
