@@ -47,6 +47,11 @@ public enum Alliance {
 		public boolean isBlack() {
 			return false;
 		}
+		
+		@Override
+		public String toString() {
+			return "White";
+		}
 
 		/**
 		 * Overridden method that returns the white player if it's the white players turn.
@@ -96,6 +101,11 @@ public enum Alliance {
 		@Override
 		public boolean isBlack() {
 			return true;
+		}
+		
+		@Override
+		public String toString() {
+			return "Black";
 		}
 		
 		/**

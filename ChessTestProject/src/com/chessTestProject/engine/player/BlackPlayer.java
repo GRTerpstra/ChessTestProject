@@ -54,6 +54,11 @@ public class BlackPlayer extends Player {
 	public Player getOpponent() {
 		return this.board.whitePlayer();
 	}
+	
+	@Override
+	public String toString() {
+		return Alliance.BLACK.toString();
+	}
 
 	/**
 	 * Overridden method that checks if the player can castle, and returns a list of possible castle moves.
