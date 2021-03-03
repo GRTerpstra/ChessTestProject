@@ -6,19 +6,17 @@ import com.chessTestProject.engine.board.Board;
 import com.chessTestProject.gui.Table;
 
 /**
- * Main class of the application. 
+ * Main class and entry point of the program.
  * @author Gerwin Terpstra
- * @Version 1.0
- * @Since 02-22-2021
+ * @version 1.0
+ * @since 02-22-2021
  */
 public class JChess {
 	public static void main(String[] args) {	
 		// Declare and initialize local variables.
 		Board board = Board.createStandardBoard();
 		
-		
-		System.out.println(board);
-		
+		System.out.println(board);		
 		Table.get().show();
 	}
 }

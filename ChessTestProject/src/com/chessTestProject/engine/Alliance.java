@@ -1,10 +1,10 @@
 // User-defined package.
 package com.chessTestProject.engine;
 
+//Imported user-defined classes.
 import com.chessTestProject.engine.board.BoardUtils;
-// Imported user-defined classes.
-import com.chessTestProject.engine.player.BlackPlayer;
 import com.chessTestProject.engine.player.Player;
+import com.chessTestProject.engine.player.BlackPlayer;
 import com.chessTestProject.engine.player.WhitePlayer;
 
 /**
@@ -17,22 +17,26 @@ import com.chessTestProject.engine.player.WhitePlayer;
 public enum Alliance {	
 	WHITE {
 		/**
-		 * Overridden method that returns the direction to indicate which side of the board a pawn can move towards.
-		 * @return int number to calculate the coordinates a pawn can move to.
+		 * Overridden method that returns a direction to indicate which side of the board a pawn can move towards.
+		 * @return int returns -1 by default.
 		 */
 		@Override
 		public int getDirection() {
 			return -1;
 		}
 		
+		/**
+		 * Overriden method that returns the opposite direction of this alliance's pawns.
+		 * @return int returns 1 by default
+		 */
 		@Override
 		public int getOppositeDirection() {
 			return 1;
 		}
 
 		/**
-		 * Overridden method that defines and returns that the alliance of the piece is white.
-		 * @return boolean true for a white piece.
+		 * Overridden method that defines that this alliance is white.
+		 * @return boolean true returns true by default.
 		 */
 		@Override
 		public boolean isWhite() {
