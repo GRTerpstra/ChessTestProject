@@ -17,8 +17,9 @@ public class JChess {
 		Board board = Board.createStandardBoard();
 		
 		
-		System.out.println(board);
 		
+		System.out.println(board);
 		Table.get().show();
+		// test code zonder te committen
 	}
 }
