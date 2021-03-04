@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Class that creates the logic of the board. * 
+ * Class that creates the logic of the board. 
  * @author Gerwin Terpstra.
  * @version 1.0.
  * @since 02-18-2021.

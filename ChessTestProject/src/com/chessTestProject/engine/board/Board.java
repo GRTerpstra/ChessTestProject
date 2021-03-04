@@ -4,7 +4,13 @@ package com.chessTestProject.engine.board;
 // Imported user-defined classes.
 import com.chessTestProject.engine.Alliance;
 import com.chessTestProject.engine.board.Move.MoveFactory;
-import com.chessTestProject.engine.pieces.*;
+import com.chessTestProject.engine.pieces.Bishop;
+import com.chessTestProject.engine.pieces.King;
+import com.chessTestProject.engine.pieces.Knight;
+import com.chessTestProject.engine.pieces.Pawn;
+import com.chessTestProject.engine.pieces.Piece;
+import com.chessTestProject.engine.pieces.Queen;
+import com.chessTestProject.engine.pieces.Rook;
 import com.chessTestProject.engine.player.BlackPlayer;
 import com.chessTestProject.engine.player.Player;
 import com.chessTestProject.engine.player.WhitePlayer;
